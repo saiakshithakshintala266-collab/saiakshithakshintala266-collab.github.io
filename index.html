@@ -7,22 +7,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Sai Akshith">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sai Akshith Akshintala | Full Stack & AI Engineer">
 <title>Sai Akshith Akshintala | Portfolio</title>
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2FQBBH53DK"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ9VPY3X77"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-2FQBBH53DK');
+  gtag('config', 'G-MJ9VPY3X77');
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100%;height:100%;overflow:hidden;background:#060B14;font-family:'Inter',system-ui,sans-serif;}
 @media (max-width:768px){
-  html,body{overflow:hidden;}
+  html,body{overflow:hidden;-webkit-overflow-scrolling:touch;}
   #wrap{overflow:hidden;}
   .sl{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 }
@@ -31,10 +32,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#060B14;font-family:
 #loader.out{opacity:0;pointer-events:none;}
 .lb{width:200px;height:2px;background:#1a2540;}
 .lbf{height:100%;width:0;background:#F0C020;animation:lf 1.5s ease forwards;}
+@-webkit-keyframes lf{to{width:100%}}
 @keyframes lf{to{width:100%}}
 .lt{font-family:'JetBrains Mono',monospace;font-size:11px;color:#3a4460;letter-spacing:3px;}
 #nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:50;background:rgba(6,11,20,.95);border-bottom:1px solid #1a2540;display:flex;align-items:center;justify-content:space-between;padding:0 36px;}
-.logo{width:32px;height:32px;border:1.5px solid #F0C020;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;}
+.logo{width:32px;height:32px;border:1.5px solid #F0C020;-webkit-clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;}
 .logo span{font-family:'Bebas Neue',sans-serif;color:#F0C020;font-size:13px;letter-spacing:1px;}
 .ndots{display:flex;gap:8px;align-items:center;}
 .ndot{width:7px;height:7px;border-radius:50%;border:1px solid #3a4460;cursor:pointer;transition:all .25s;}
@@ -42,7 +44,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#060B14;font-family:
 .nlbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8892b0;letter-spacing:2px;}
 #prog{position:fixed;bottom:0;left:0;height:2px;background:#F0C020;z-index:50;transition:width .9s cubic-bezier(.77,0,.175,1);}
 #wrap{position:fixed;inset:0;z-index:1;overflow:hidden;}
-#track{display:flex;height:100vh;transition:transform .9s cubic-bezier(.77,0,.175,1);will-change:transform;}
+#track{display:flex;height:100vh;transition:transform .9s cubic-bezier(.77,0,.175,1);-webkit-transform:translateZ(0);transform:translateZ(0);}
 .sl{flex:0 0 100vw;width:100vw;height:100vh;display:flex;align-items:center;padding:70px 72px 56px;position:relative;}
 #ov{position:fixed;inset:0;z-index:40;background:#060B14;opacity:0;pointer-events:none;transition:opacity .28s;}
 #hud{position:fixed;bottom:24px;right:36px;z-index:45;display:flex;align-items:center;gap:8px;opacity:0;transition:opacity .3s;}
@@ -59,9 +61,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#060B14;font-family:
 .nudge{position:absolute;right:52px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.45;}
 .nudge span{font-family:'JetBrains Mono',monospace;font-size:9px;color:#F0C020;letter-spacing:3px;writing-mode:vertical-rl;}
 .arr{width:26px;height:26px;border-right:2px solid #F0C020;border-bottom:2px solid #F0C020;transform:rotate(-45deg);animation:ap 1.6s ease infinite;}
+@-webkit-keyframes ap{0%,100%{opacity:.35;-webkit-transform:rotate(-45deg) translate(0,0)}50%{opacity:1;-webkit-transform:rotate(-45deg) translate(5px,5px)}}
 @keyframes ap{0%,100%{opacity:.35;transform:rotate(-45deg) translate(0,0)}50%{opacity:1;transform:rotate(-45deg) translate(5px,5px)}}
+@-webkit-keyframes fu{from{opacity:0;-webkit-transform:translateY(18px)}to{opacity:1;-webkit-transform:none}}
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.glass{background:rgba(6,11,20,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(240,192,32,0.12);border-radius:8px;padding:44px 52px;}
+.glass{background:rgba(6,11,20,0.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(240,192,32,0.12);border-radius:8px;padding:44px 52px;}
 .sp{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F0C020;letter-spacing:3px;margin-bottom:7px;}
 .sh{font-family:'Bebas Neue',sans-serif;font-size:50px;color:#e8f0ff;letter-spacing:2px;line-height:1;margin-bottom:3px;}
 .ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:#2a3450;letter-spacing:2px;margin-bottom:22px;}
@@ -530,7 +534,7 @@ window.addEventListener('touchend',function(e){
 
 // ── MAIN 3D SCENE ────────────────────────────────────────────
 var bgCv=document.getElementById('bg');
-var R=new THREE.WebGLRenderer({canvas:bgCv,antialias:!isMobile});
+var R=new THREE.WebGLRenderer({canvas:bgCv,antialias:!isMobile,preserveDrawingBuffer:false,powerPreference:'high-performance'});
 R.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio,2));
 R.setSize(window.innerWidth,window.innerHeight);
 R.setClearColor(0x060B14,1);
@@ -668,6 +672,9 @@ var pG=new THREE.BufferGeometry(), PC=700, pA=new Float32Array(PC*3);
 for(var pi=0;pi<PC;pi++){pA[pi*3]=(Math.random()-.5)*120;pA[pi*3+1]=Math.random()*55+2;pA[pi*3+2]=(Math.random()-.5)*80;}
 pG.setAttribute('position',new THREE.BufferAttribute(pA,3));
 sc.add(new THREE.Points(pG,new THREE.PointsMaterial({color:0xa0aac0,size:0.055,transparent:true,opacity:0.38})));
+
+bgCv.addEventListener('webglcontextlost',function(e){e.preventDefault();},false);
+bgCv.addEventListener('webglcontextrestored',function(){R.setSize(window.innerWidth,window.innerHeight);},false);
 
 var cP=new THREE.Vector3(0,5,21), cL=new THREE.Vector3(0,1.5,0), BX=-4, clk=0;
 
