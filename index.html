@@ -534,13 +534,27 @@ window.addEventListener('touchend',function(e){
 
 // ── MAIN 3D SCENE ────────────────────────────────────────────
 var bgCv=document.getElementById('bg');
-var R=new THREE.WebGLRenderer({canvas:bgCv,antialias:!isMobile,preserveDrawingBuffer:false,powerPreference:'high-performance'});
-R.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio,2));
-R.setSize(window.innerWidth,window.innerHeight);
-R.setClearColor(0x060B14,1);
-R.shadowMap.enabled=true; R.shadowMap.type=THREE.PCFSoftShadowMap;
+var R=null, webGLOK=false;
+try{
+  // Check WebGL support first
+  var testCv=document.createElement('canvas');
+  var testCtx=testCv.getContext('webgl')||testCv.getContext('experimental-webgl');
+  if(!testCtx) throw new Error('no webgl');
+  R=new THREE.WebGLRenderer({canvas:bgCv,antialias:!isMobile,preserveDrawingBuffer:false,powerPreference:'high-performance'});
+  R.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio,2));
+  R.setSize(window.innerWidth,window.innerHeight);
+  R.setClearColor(0x060B14,1);
+  R.shadowMap.enabled=true; R.shadowMap.type=THREE.PCFSoftShadowMap;
+  webGLOK=true;
+}catch(e){
+  console.warn('WebGL not available, running without 3D background');
+  bgCv.style.display='none';
+  document.body.style.background='#060B14';
+}
 
-var sc=new THREE.Scene();
+var sc,cam,gk,HL1,HL2,BM,BT,pG,pA,wMeshes,exfM,mGlw;
+if(webGLOK){
+sc=new THREE.Scene();
 sc.fog=new THREE.Fog(0x060B14,28,115);
 var cam=new THREE.PerspectiveCamera(52,window.innerWidth/window.innerHeight,0.1,200);
 cam.position.set(0,5,21); cam.lookAt(0,1.5,0);
@@ -679,6 +693,7 @@ bgCv.addEventListener('webglcontextrestored',function(){R.setSize(window.innerWi
 var cP=new THREE.Vector3(0,5,21), cL=new THREE.Vector3(0,1.5,0), BX=-4, clk=0;
 
 function tick(){
+  if(!webGLOK||!R||!sc||!cam) return;
   requestAnimationFrame(tick); clk+=0.012;
   cP.lerp(tP,0.038); cL.lerp(tL,0.038); cam.position.copy(cP); cam.lookAt(cL);
   if(accel){BM.position.x+=0.22;BM.rotation.y=0.06;}
@@ -696,15 +711,18 @@ function tick(){
   pG.attributes.position.needsUpdate=true;
   R.render(sc,cam);
 }
-tick();
+} // end if(webGLOK)
+if(webGLOK) tick();
 
 var isMobile = window.innerWidth <= 768;
 
 window.addEventListener('resize',function(){
   isMobile = window.innerWidth <= 768;
-  cam.aspect=window.innerWidth/window.innerHeight;
-  cam.updateProjectionMatrix();
-  R.setSize(window.innerWidth,window.innerHeight);
+  if(webGLOK&&R){
+    cam.aspect=window.innerWidth/window.innerHeight;
+    cam.updateProjectionMatrix();
+    R.setSize(window.innerWidth,window.innerHeight);
+  }
 });
 
 
@@ -766,7 +784,9 @@ if (cloud) {
 }
 
 // CONTACT 2D
-setTimeout(function(){document.getElementById('loader').classList.add('out');},1500);
+// Always dismiss loader regardless of WebGL state
+function dismissLoader(){document.getElementById('loader').classList.add('out');}
+setTimeout(dismissLoader, 1500);
 })();
 </script>
 </body>
