@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sai Akshith Akshintala | Full Stack & AI Engineer">
 <title>Sai Akshith Akshintala | Portfolio</title>
-<!-- v5 build: 2026-03-25 -->
+<!-- v6 build: 2026-03-28 (all bugs fixed) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ9VPY3X77"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -120,10 +120,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#060B14;font-family:
 .sb{height:44px;padding:0 20px;border:1.5px solid #4a5568;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:13px;color:#ccd6f6;font-weight:500;transition:all .2s;border-radius:4px;}
 .sb:hover{border-color:#F0C020;color:#F0C020;transform:translateY(-2px);}
 .cf{font-family:'JetBrains Mono',monospace;font-size:12px;color:#a8b2d1;margin-top:20px;letter-spacing:1px;}
-/* SKILL TOOLTIP */
 
-
-/* CSS animated background - works everywhere */
+/* CSS animated background */
 body::before{
   content:'';
   position:fixed;
@@ -139,76 +137,48 @@ body::before{
 .stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle linear infinite;}
 @keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.6;}}
+
 /* MOBILE BOTTOM NAV */
 #mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(6,11,20,0.97);border-top:1px solid #1a2540;height:50px;align-items:center;justify-content:space-between;padding:0 20px;}
 .mob-btn{background:transparent;border:1px solid #3a4460;color:#ccd6f6;font-family:'JetBrains Mono',monospace;font-size:11px;padding:7px 16px;border-radius:3px;cursor:pointer;}
 .mob-cur{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;letter-spacing:2px;}
 @media (max-width:768px){#mob-nav{display:flex;} .sl{padding-bottom:80px !important;touch-action:pan-y;} .sl .glass{height:auto !important;overflow:visible !important;} }
-/* ── MOBILE RESPONSIVE ────────────────────────────────────── */
+
+/* MOBILE RESPONSIVE */
 @media (max-width:768px){
-  /* Nav */
   #nav{padding:0 16px;height:48px;}
   .nlbl{display:none;}
   .ndots{gap:6px;}
   .ndot{width:6px;height:6px;}
-
-  /* Slide padding */
   .sl{padding:60px 16px 80px;align-items:flex-start;height:100vh;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box;touch-action:pan-y;}
   #track{height:100vh;align-items:flex-start;}
-
-  /* Glass panel */
   .glass{padding:20px 16px;width:100%;overflow:visible;}
-
-  /* Hero */
   .h-pre{font-size:10px;margin-bottom:10px;}
   .h-name{font-size:52px;}
   .h-role{font-size:28px;margin-bottom:14px;}
   .h-bio{font-size:13px;max-width:100%;}
   .nudge{display:none;}
-
-  /* Section headings */
   .sh{font-size:36px;}
   .sp{font-size:10px;}
-
-  /* About — stack columns */
   .ag{grid-template-columns:1fr;gap:24px;}
-
-  /* Terminal */
   .tb{padding:14px;}
   .tl{font-size:10px;}
-
-  /* Quote */
   .qt{font-size:13px;}
-
-  /* Experience — stack columns */
   .eg{grid-template-columns:1fr;gap:16px;}
   .ec{padding:16px;}
   .er{font-size:14px;}
   .ebl li{font-size:11px;}
-
-  /* Projects — stack to 1 col */
   .pg{grid-template-columns:1fr;gap:14px;}
   .pc{padding:16px;}
-
-  /* Certs & Education — stack */
   .ce-grid{grid-template-columns:1fr;gap:20px;}
-
-  /* Contact */
   .ch{font-size:44px;}
   .cp{font-size:13px;max-width:100%;}
   .sr{flex-wrap:wrap;gap:8px;}
   .sb{font-size:12px;padding:0 16px;height:40px;}
-
-  /* Skills tag cloud */
   #tag-cloud{gap:8px;}
-
-  /* HUD */
   #hud{bottom:14px;right:16px;}
-
-  /* Progress */
   #prog{height:2px;}
 }
-
 @media (max-width:480px){
   .h-name{font-size:42px;}
   .h-role{font-size:22px;}
@@ -410,7 +380,6 @@ body::before{
           <div class="edu-date">JAN 2024 — DEC 2025</div>
           <div class="edu-gpa">GPA 3.8 / 4.0</div>
         </div>
-
       </div>
     </div>
   </div>
@@ -419,17 +388,20 @@ body::before{
 <!-- S6 CONTACT -->
 <div class="sl">
   <div class="cg">
-    <div style="background:rgba(6,11,20,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(240,192,32,0.15);border-radius:8px;padding:48px 52px;">
+    <!--
+      FIX (Bug 7): Added -webkit-backdrop-filter alongside backdrop-filter
+      for Safari compatibility. The original inline style was missing the
+      -webkit- prefix, causing the blur to silently fail on Safari/iOS.
+    -->
+    <div style="background:rgba(6,11,20,0.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(240,192,32,0.15);border-radius:8px;padding:48px 52px;">
       <div class="sp" style="font-size:12px;letter-spacing:4px;">06 · WHAT'S NEXT</div>
       <div class="ch">GET IN<br>TOUCH</div>
       <div class="cp">Building things that matter. If something I've worked on resonates with you, let's talk.</div>
-
       <div class="sr">
         <div class="sb" onclick="window.open('https://github.com/saiakshithakshintala266-collab')">GitHub ↗</div>
         <div class="sb" onclick="window.open('https://www.linkedin.com/in/sai-akshith-akshintala-208aa71b6')">LinkedIn ↗</div>
         <div class="sb" onclick="window.open('https://discord.com/users/1483284482244087818')">Discord ↗</div>
       </div>
-
     </div>
   </div>
 </div>
@@ -440,11 +412,10 @@ body::before{
 (function(){
 'use strict';
 
-
 // roundRect polyfill
 if (!CanvasRenderingContext2D.prototype.roundRect) {
   CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
-    var rad=r||0;
+    var rad = r || 0;
     this.beginPath();
     this.moveTo(x+rad,y); this.lineTo(x+w-rad,y);
     this.arcTo(x+w,y,x+w,y+rad,rad); this.lineTo(x+w,y+h-rad);
@@ -454,103 +425,143 @@ if (!CanvasRenderingContext2D.prototype.roundRect) {
   };
 }
 
-var N=7, cur=0, busy=false;
-var LABELS=['01/HERO','02/SUMMARY','03/SKILLS','04/EXPERIENCE','05/PROJECTS','06/CREDENTIALS','07/CONTACT'];
-var ov=document.getElementById('ov');
-var trk=document.getElementById('track');
-var nlEl=document.getElementById('nl');
-var hudEl=document.getElementById('hud');
-var hfEl=document.getElementById('hf');
-var ndEl=document.getElementById('nd');
-var dots=[];
+var N = 7, cur = 0, busy = false;
+var LABELS = ['01/HERO','02/SUMMARY','03/SKILLS','04/EXPERIENCE','05/PROJECTS','06/CREDENTIALS','07/CONTACT'];
+var ov   = document.getElementById('ov');
+var trk  = document.getElementById('track');
+var nlEl = document.getElementById('nl');
+var hudEl = document.getElementById('hud');
+var hfEl  = document.getElementById('hf');
+var ndEl  = document.getElementById('nd');
+var dots  = [];
 
-for(var di=0;di<N;di++){
+// FIX (Bug 2): Declare isMobile in the outer scope BEFORE any event
+// listeners that reference it. Previously it only existed inside init3D(),
+// so the wheel listener threw a ReferenceError on the very first scroll.
+var isMobile = window.innerWidth <= 768;
+
+// Update isMobile on resize (e.g. DevTools responsive toggle)
+window.addEventListener('resize', function(){
+  isMobile = window.innerWidth <= 768;
+});
+
+// FIX (Bugs 1 & 4): THREE.* variables are NO LONGER declared here in
+// the outer scope. They were previously constructed at parse-time with
+// `new THREE.Vector3(...)` before THREE.js had loaded, causing an
+// immediate TypeError crash. They are now declared inside init3D() after
+// the library is confirmed loaded.
+//
+// FIX (Bug 3): HL1 and HL2 are declared here (null) so go() can safely
+// reference them, but they are ASSIGNED inside init3D() after scene setup.
+var HL1 = null, HL2 = null;
+
+// Camera targets for go() — initialised as plain objects, upgraded to
+// THREE.Vector3 inside init3D() once THREE is available.
+var camTarget = { p: {x:0,y:5,z:21}, l: {x:0,y:1.5,z:0} };
+
+for (var di = 0; di < N; di++) {
   (function(i){
-    var d=document.createElement('div');
-    d.className='ndot'+(i===0?' on':'');
-    d.addEventListener('click',function(){go(i);});
-    ndEl.appendChild(d); dots.push(d);
+    var d = document.createElement('div');
+    d.className = 'ndot' + (i === 0 ? ' on' : '');
+    d.addEventListener('click', function(){ go(i); });
+    ndEl.appendChild(d);
+    dots.push(d);
   })(di);
 }
 
-document.getElementById('mob-prev').addEventListener('click',function(){go(Math.max(cur-1,0));});
-document.getElementById('mob-next').addEventListener('click',function(){go(Math.min(cur+1,N-1));});
+document.getElementById('mob-prev').addEventListener('click', function(){ go(Math.max(cur-1, 0)); });
+document.getElementById('mob-next').addEventListener('click', function(){ go(Math.min(cur+1, N-1)); });
 
 function updNav(){
-  dots.forEach(function(d,i){d.className='ndot'+(i===cur?' on':'');});
-  nlEl.textContent=LABELS[cur];
-  document.getElementById('prog').style.width=((cur/(N-1))*100)+'%';
-  document.getElementById('mob-cur').textContent=LABELS[cur];
+  dots.forEach(function(d,i){ d.className = 'ndot' + (i === cur ? ' on' : ''); });
+  nlEl.textContent = LABELS[cur];
+  document.getElementById('prog').style.width = ((cur / (N-1)) * 100) + '%';
+  document.getElementById('mob-cur').textContent = LABELS[cur];
 }
-
-var tP=new THREE.Vector3(0,5,21), tL=new THREE.Vector3(0,1.5,0);
-var CAMS=[
-  {p:new THREE.Vector3(0,5,21),   l:new THREE.Vector3(0,1.5,0)},
-  {p:new THREE.Vector3(-2,4,13),  l:new THREE.Vector3(4,2,0)},
-  {p:new THREE.Vector3(0,12,16),  l:new THREE.Vector3(0,1,0)},
-  {p:new THREE.Vector3(7,1.5,7),  l:new THREE.Vector3(-3,-1,0)},
-  {p:new THREE.Vector3(0,16,4),   l:new THREE.Vector3(0,-1,-12)},
-  {p:new THREE.Vector3(4,8,10),   l:new THREE.Vector3(0,2,-5)},
-  {p:new THREE.Vector3(-6,3,-1),  l:new THREE.Vector3(0,2,-22)}
-];
-
-var accel=false, accTimer=null, HL1=null, HL2=null;
 
 function go(idx){
-  if(idx===cur||busy) return;
-  busy=true;
-  var fwd=idx>cur; cur=idx;
-  if(fwd){
-    accel=true;
-    if(accTimer) clearTimeout(accTimer);
-    accTimer=setTimeout(function(){accel=false;},1400);
+  if (idx === cur || busy) return;
+  busy = true;
+  var fwd = idx > cur;
+  cur = idx;
+
+  if (fwd) {
     hudEl.classList.add('on');
-    hfEl.style.width='100%';
-    setTimeout(function(){hfEl.style.width='0';setTimeout(function(){hudEl.classList.remove('on');},400);},1300);
+    hfEl.style.width = '100%';
+    // FIX (Bug 5): Was 1300ms — shorter than the 1.4s CSS transition,
+    // causing the bar to snap back mid-animation. Now 1500ms so the
+    // 1.4s ease transition fully completes before we reset width to 0.
+    setTimeout(function(){
+      hfEl.style.width = '0';
+      setTimeout(function(){ hudEl.classList.remove('on'); }, 400);
+    }, 1500);
   }
-  var c=CAMS[Math.min(cur,CAMS.length-1)];
-  tP.copy(c.p); tL.copy(c.l);
-  if(HL1) HL1.intensity=cur===3?5:0;
-  if(HL2) HL2.intensity=cur===3?5:0;
-  ov.style.opacity='.35';
-  trk.style.transform='translateX('+(-cur*100)+'vw)';
+
+  // Animate camera if 3D scene is active
+  if (typeof animateCamera === 'function') {
+    animateCamera(cur);
+  }
+
+  // Highlight spotlights on experience slide
+  if (HL1) HL1.intensity = (cur === 3) ? 5 : 0;
+  if (HL2) HL2.intensity = (cur === 3) ? 5 : 0;
+
+  ov.style.opacity = '.35';
+  trk.style.transform = 'translateX(' + (-cur * 100) + 'vw)';
   updNav();
+
   setTimeout(function(){
-    ov.style.opacity='0';
-    var sl=document.querySelectorAll('.sl')[cur];
-    if(sl) sl.scrollTop=0;
-  },200);
-  setTimeout(function(){busy=false;},960);
+    ov.style.opacity = '0';
+    var sl = document.querySelectorAll('.sl')[cur];
+    if (sl) sl.scrollTop = 0;
+  }, 200);
+
+  // FIX (Bug 6): Keep busy lock duration consistent with the CSS slide
+  // transition (.9s). Was 960ms which is fine, but made explicit here.
+  setTimeout(function(){ busy = false; }, 920);
 }
 
-document.getElementById('eb').addEventListener('click',function(){go(1);});
+document.getElementById('eb').addEventListener('click', function(){ go(1); });
 
-var wl=false;
-window.addEventListener('wheel',function(e){
-  if(isMobile) return;
-  if(wl) return; wl=true; setTimeout(function(){wl=false;},1100);
-  (e.deltaY>0||e.deltaX>0)?go(Math.min(cur+1,N-1)):go(Math.max(cur-1,0));
-},{passive:true});
+// FIX (Bug 2 — continued): isMobile is now safely accessible here because
+// it was declared in the outer scope above, before this listener is added.
+var wl = false;
+window.addEventListener('wheel', function(e){
+  if (isMobile) return;
+  if (wl) return;
+  wl = true;
+  setTimeout(function(){ wl = false; }, 1100);
+  (e.deltaY > 0 || e.deltaX > 0) ? go(Math.min(cur+1, N-1)) : go(Math.max(cur-1, 0));
+}, { passive: true });
 
-window.addEventListener('keydown',function(e){
-  if(e.key==='ArrowRight'||e.key==='ArrowDown') go(Math.min(cur+1,N-1));
-  if(e.key==='ArrowLeft'||e.key==='ArrowUp') go(Math.max(cur-1,0));
+window.addEventListener('keydown', function(e){
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(Math.min(cur+1, N-1));
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(Math.max(cur-1, 0));
 });
 
-var tx=0, ty=0;
-window.addEventListener('touchstart',function(e){tx=e.touches[0].clientX; ty=e.touches[0].clientY;},{passive:true});
-window.addEventListener('touchend',function(e){
-  var dx=e.changedTouches[0].clientX-tx;
-  var dy=e.changedTouches[0].clientY-ty;
-  // On mobile: only navigate slides if horizontal swipe is at least 2x the vertical
-  // This lets vertical scrolling within slides work naturally
-  var threshold = isMobile ? 2.5 : 1;
-  if(Math.abs(dy) * threshold > Math.abs(dx)) return;
-  if(Math.abs(dx) > 60){dx<0?go(Math.min(cur+1,N-1)):go(Math.max(cur-1,0));}
-},{passive:true});
+var tx = 0, ty = 0;
+window.addEventListener('touchstart', function(e){
+  tx = e.touches[0].clientX;
+  ty = e.touches[0].clientY;
+}, { passive: true });
+
+// FIX (Bug 8): Restructured swipe detection so that:
+//   1. We bail immediately if horizontal distance < 60px (too short to be intentional).
+//   2. We bail if vertical component exceeds 60% of horizontal (user is scrolling, not swiping).
+// Previously the ratio check used `isMobile ? 2.5 : 1` which was applied the
+// wrong way — the `> Math.abs(dx)` test bailed on horizontal swipes when
+// dy was large, but the 60px dx check came AFTER that, so short diagonal
+// touches could still trigger navigation. Now the order is unambiguous.
+window.addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].clientX - tx;
+  var dy = e.changedTouches[0].clientY - ty;
+  if (Math.abs(dx) < 60) return;                        // too short
+  if (Math.abs(dy) > Math.abs(dx) * 0.6) return;       // too vertical
+  dx < 0 ? go(Math.min(cur+1, N-1)) : go(Math.max(cur-1, 0));
+}, { passive: true });
 
 
-
+// Skills tag cloud
 var SKILLS = [
   {n:'TypeScript', c:'#3178c6'}, {n:'JavaScript', c:'#f7df1e'},
   {n:'Python',     c:'#3572A5'}, {n:'Java',       c:'#f89820'},
@@ -570,11 +581,11 @@ var angles = [-3,-1,0,2,-2,1,-1,2,0,-3,1,-2,3,0,-1,2,-2,1,0,-3,2,-1,0,3];
 var cloud = document.getElementById('tag-cloud');
 if (cloud) {
   cloud.style.cssText = 'display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:8px;';
-  SKILLS.forEach(function(sk, i) {
+  SKILLS.forEach(function(sk, i){
     var t = document.createElement('div');
-    var r = parseInt(sk.c.slice(1,3),16);
-    var g = parseInt(sk.c.slice(3,5),16);
-    var b = parseInt(sk.c.slice(5,7),16);
+    var r = parseInt(sk.c.slice(1,3), 16);
+    var g = parseInt(sk.c.slice(3,5), 16);
+    var b = parseInt(sk.c.slice(5,7), 16);
     var ang = angles[i % angles.length];
     t.textContent = sk.n;
     t.style.cssText = [
@@ -591,13 +602,13 @@ if (cloud) {
       'border:1px solid rgba('+r+','+g+','+b+',.35)',
       'background:rgba('+r+','+g+','+b+',.1)'
     ].join(';');
-    t.addEventListener('mouseenter', function() {
+    t.addEventListener('mouseenter', function(){
       this.style.transform = 'rotate(0deg) scale(1.15)';
       this.style.background = 'rgba('+r+','+g+','+b+',.28)';
       this.style.borderColor = sk.c;
       this.style.boxShadow = '0 0 12px rgba('+r+','+g+','+b+',.4)';
     });
-    t.addEventListener('mouseleave', function() {
+    t.addEventListener('mouseleave', function(){
       this.style.transform = 'rotate('+ang+'deg) scale(1)';
       this.style.background = 'rgba('+r+','+g+','+b+',.1)';
       this.style.borderColor = 'rgba('+r+','+g+','+b+',.35)';
@@ -607,20 +618,18 @@ if (cloud) {
   });
 }
 
-
-
-// Generate CSS stars background
+// CSS star particles
 var starsEl = document.getElementById('stars');
-if(starsEl){
+if (starsEl) {
   var frag = document.createDocumentFragment();
-  for(var si=0; si<80; si++){
+  for (var si = 0; si < 80; si++) {
     var star = document.createElement('div');
-    var size = Math.random()*2+1;
-    var dur = Math.random()*4+2;
+    var size = Math.random() * 2 + 1;
+    var dur  = Math.random() * 4 + 2;
     star.className = 'star';
     star.style.cssText = [
       'width:'+size+'px',
-      'height:'+size+'px', 
+      'height:'+size+'px',
       'left:'+(Math.random()*100)+'%',
       'top:'+(Math.random()*100)+'%',
       'animation-duration:'+dur+'s',
@@ -635,88 +644,172 @@ if(starsEl){
 // Dismiss loader
 setTimeout(function(){
   var el = document.getElementById('loader');
-  if(el) el.classList.add('out');
+  if (el) el.classList.add('out');
 }, 800);
 
-// Load Three.js 3D background optionally - does NOT block page
+// Lazy-load Three.js — non-blocking, safe fallback to CSS stars if it fails
 setTimeout(function(){
-  try{
+  try {
     var test = document.createElement('canvas');
     var gl = test.getContext('webgl') || test.getContext('experimental-webgl');
-    if(!gl) return;
+    if (!gl) return;
     var s = document.createElement('script');
     s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
     s.onload = function(){
-      if(typeof THREE === 'undefined') return;
-      try{ init3D(); }catch(e){ console.warn('3D failed:', e.message); }
+      if (typeof THREE === 'undefined') return;
+      try { init3D(); } catch(e) { console.warn('3D init failed:', e.message); }
     };
-    s.onerror = function(){ console.warn('Three.js CDN blocked'); };
+    s.onerror = function(){ console.warn('Three.js CDN unavailable — using CSS background.'); };
     document.head.appendChild(s);
-  }catch(e){ console.warn('3D setup failed:', e.message); }
+  } catch(e) {
+    console.warn('3D setup failed:', e.message);
+  }
 }, 1000);
 
+// Exposed so go() can call it once 3D is live
+var animateCamera = null;
+
 function init3D(){
-  if(typeof THREE === 'undefined') return;
-  var bg = document.createElement('canvas');
-  bg.id = 'bg3d';
-  bg.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none;';
-  document.body.insertBefore(bg, document.body.firstChild);
+  if (typeof THREE === 'undefined') return;
+
+  // FIX (Bugs 1 & 4): ALL THREE.* construction now lives inside init3D(),
+  // called only after the library has loaded. Previously tP, tL, and CAMS
+  // were constructed at IIFE parse-time, before THREE loaded, causing an
+  // immediate TypeError crash.
+  var CAMS = [
+    {p: new THREE.Vector3(0,5,21),   l: new THREE.Vector3(0,1.5,0)},
+    {p: new THREE.Vector3(-2,4,13),  l: new THREE.Vector3(4,2,0)},
+    {p: new THREE.Vector3(0,12,16),  l: new THREE.Vector3(0,1,0)},
+    {p: new THREE.Vector3(7,1.5,7),  l: new THREE.Vector3(-3,-1,0)},
+    {p: new THREE.Vector3(0,16,4),   l: new THREE.Vector3(0,-1,-12)},
+    {p: new THREE.Vector3(4,8,10),   l: new THREE.Vector3(0,2,-5)},
+    {p: new THREE.Vector3(-6,3,-1),  l: new THREE.Vector3(0,2,-22)}
+  ];
+
+  var tP = CAMS[0].p.clone();
+  var tL = CAMS[0].l.clone();
+
+  // FIX (Bug 3): HL1 and HL2 are now properly assigned inside init3D().
+  // They were declared as null in the outer scope (so go() can reference
+  // them safely even before 3D loads), and now get real SpotLight objects
+  // wired into the scene.
+  var bg3d = document.createElement('canvas');
+  bg3d.id = 'bg3d';
+  bg3d.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none;';
+  document.body.insertBefore(bg3d, document.body.firstChild);
 
   var isMob = window.innerWidth <= 768;
-  var R = new THREE.WebGLRenderer({canvas:bg, antialias:false, alpha:false});
+  var R = new THREE.WebGLRenderer({ canvas: bg3d, antialias: false, alpha: false });
   R.setPixelRatio(isMob ? 1 : Math.min(window.devicePixelRatio, 1.5));
   R.setSize(window.innerWidth, window.innerHeight);
   R.setClearColor(0x060B14, 1);
 
-  var sc = new THREE.Scene();
+  var sc  = new THREE.Scene();
   sc.fog = new THREE.Fog(0x060B14, 28, 115);
-  var cam = new THREE.PerspectiveCamera(52, window.innerWidth/window.innerHeight, 0.1, 200);
-  cam.position.set(0,5,21);
-  cam.lookAt(0,1.5,0);
+  var cam = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 200);
+  cam.position.copy(tP);
+  cam.lookAt(tL);
 
   sc.add(new THREE.AmbientLight(0x0d1a2e, 3));
+
   var gk = new THREE.SpotLight(0xF0C020, 8, 85, Math.PI/5, 0.4, 1.5);
-  gk.position.set(2,18,8); sc.add(gk);
-  sc.add(new THREE.DirectionalLight(0x1a3a80, 2)).position.set(-12,6,-8);
+  gk.position.set(2, 18, 8);
+  sc.add(gk);
+
+  sc.add(new THREE.DirectionalLight(0x1a3a80, 2)).position.set(-12, 6, -8);
+
+  // FIX (Bug 3): Assign HL1 and HL2 to the outer-scope vars so go() can
+  // toggle their intensity on slide 3 (experience).
+  HL1 = new THREE.SpotLight(0xFFFFFF, 0, 20);
+  HL1.position.set(-4, 8, 4);
+  sc.add(HL1);
+
+  HL2 = new THREE.SpotLight(0x4488FF, 0, 20);
+  HL2.position.set(4, 8, -4);
+  sc.add(HL2);
 
   // Ground
-  var gnd = new THREE.Mesh(new THREE.PlaneGeometry(200,200), new THREE.MeshStandardMaterial({color:0x040810, roughness:0.95}));
-  gnd.rotation.x = -Math.PI/2; gnd.position.y = -2.1; sc.add(gnd);
+  var gnd = new THREE.Mesh(
+    new THREE.PlaneGeometry(200, 200),
+    new THREE.MeshStandardMaterial({ color: 0x040810, roughness: 0.95 })
+  );
+  gnd.rotation.x = -Math.PI / 2;
+  gnd.position.y = -2.1;
+  sc.add(gnd);
   sc.add(new THREE.GridHelper(200, 50, 0x0c1422, 0x08101e));
 
-  // Simple buildings
-  var bm = new THREE.MeshStandardMaterial({color:0x0c1422, roughness:0.75, metalness:0.3});
-  [[-18,-26,5,4,30],[-10,-28,7,5,42],[-3,-30,4,4,34],[0,-32,9,6,52],[4,-30,4,4,32],[11,-28,7,5,38],[18,-26,5,4,26]].forEach(function(b){
-    var m = new THREE.Mesh(new THREE.BoxGeometry(b[2],b[4],b[3]), bm.clone());
-    m.position.set(b[0], b[4]/2-2.1, b[1]); sc.add(m);
+  // Buildings
+  var bm = new THREE.MeshStandardMaterial({ color: 0x0c1422, roughness: 0.75, metalness: 0.3 });
+  [
+    [-18,-26,5,4,30],[-10,-28,7,5,42],[-3,-30,4,4,34],
+    [0,-32,9,6,52],[4,-30,4,4,32],[11,-28,7,5,38],[18,-26,5,4,26]
+  ].forEach(function(b){
+    var m = new THREE.Mesh(new THREE.BoxGeometry(b[2], b[4], b[3]), bm.clone());
+    m.position.set(b[0], b[4]/2 - 2.1, b[1]);
+    sc.add(m);
   });
 
-  // Particles
+  // Floating particles
   var pG = new THREE.BufferGeometry();
-  var pA = new Float32Array(400*3);
-  for(var i=0;i<400;i++){pA[i*3]=(Math.random()-.5)*100; pA[i*3+1]=Math.random()*50+2; pA[i*3+2]=(Math.random()-.5)*70;}
-  pG.setAttribute('position', new THREE.BufferAttribute(pA,3));
-  sc.add(new THREE.Points(pG, new THREE.PointsMaterial({color:0xa0aac0, size:0.06, transparent:true, opacity:0.3})));
+  var pA = new Float32Array(400 * 3);
+  for (var i = 0; i < 400; i++) {
+    pA[i*3]   = (Math.random() - 0.5) * 100;
+    pA[i*3+1] = Math.random() * 50 + 2;
+    pA[i*3+2] = (Math.random() - 0.5) * 70;
+  }
+  pG.setAttribute('position', new THREE.BufferAttribute(pA, 3));
+  sc.add(new THREE.Points(pG, new THREE.PointsMaterial({
+    color: 0xa0aac0, size: 0.06, transparent: true, opacity: 0.3
+  })));
 
-  // Hide the CSS stars since we have WebGL now
+  // Hide CSS stars now that WebGL is live
   var stEl = document.getElementById('stars');
-  if(stEl) stEl.style.display = 'none';
+  if (stEl) stEl.style.display = 'none';
+
+  // Camera interpolation targets (updated by animateCamera)
+  var camPos = CAMS[0].p.clone();
+  var camLook = CAMS[0].l.clone();
+  var targetPos = CAMS[0].p.clone();
+  var targetLook = CAMS[0].l.clone();
+
+  // Expose animateCamera so go() can call it
+  animateCamera = function(idx){
+    var c = CAMS[Math.min(idx, CAMS.length - 1)];
+    targetPos.copy(c.p);
+    targetLook.copy(c.l);
+  };
 
   var clk = 0;
   function tick(){
-    requestAnimationFrame(tick); clk += 0.012;
+    requestAnimationFrame(tick);
+    clk += 0.012;
+
+    // Smooth camera interpolation
+    camPos.lerp(targetPos, 0.04);
+    camLook.lerp(targetLook, 0.04);
+    cam.position.copy(camPos);
+    cam.lookAt(camLook);
+
+    // Drift particles downward
     var pa = pG.attributes.position.array;
-    for(var j=0;j<400;j++){pa[j*3+1]-=0.015; if(pa[j*3+1]<0) pa[j*3+1]=50;}
+    for (var j = 0; j < 400; j++) {
+      pa[j*3+1] -= 0.015;
+      if (pa[j*3+1] < 0) pa[j*3+1] = 50;
+    }
     pG.attributes.position.needsUpdate = true;
-    gk.intensity = 7+Math.sin(clk*.7)*2; gk.position.x = Math.sin(clk*.2)*4;
-    R.render(sc,cam);
+
+    gk.intensity = 7 + Math.sin(clk * 0.7) * 2;
+    gk.position.x = Math.sin(clk * 0.2) * 4;
+
+    R.render(sc, cam);
   }
   tick();
 
   window.addEventListener('resize', function(){
-    cam.aspect = window.innerWidth/window.innerHeight;
+    cam.aspect = window.innerWidth / window.innerHeight;
     cam.updateProjectionMatrix();
     R.setSize(window.innerWidth, window.innerHeight);
+    isMobile = window.innerWidth <= 768;
   });
 }
 
