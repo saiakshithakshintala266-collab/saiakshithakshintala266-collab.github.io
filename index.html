@@ -33,12 +33,13 @@ html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-u
 .lt{font-family:'JetBrains Mono',monospace;font-size:11px;color:#3a4460;letter-spacing:3px;}
 
 /* ── NAV ────────────────────────────────────────── */
-#nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:50;background:rgba(6,11,20,.95);border-bottom:1px solid #1a2540;display:flex;align-items:center;justify-content:space-between;padding:0 36px;}
+#nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:50;background:rgba(6,11,20,.95);border-bottom:1px solid #1a2540;display:flex;align-items:center;justify-content:space-between;padding:0 36px;overflow:hidden;}
 .logo{width:32px;height:32px;border:1.5px solid #F0C020;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);-webkit-clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;}
 .logo span{font-family:'Bebas Neue',sans-serif;color:#F0C020;font-size:13px;letter-spacing:1px;}
 .ndots{display:flex;gap:8px;align-items:center;}
-/* UX FIX: dots have a hidden 44px tap target via padding */
-.ndot{width:7px;height:7px;border-radius:50%;border:1px solid #3a4460;cursor:pointer;transition:all .25s;padding:18px;margin:-18px;background-clip:content-box;}
+/* UX FIX: 44px tap target via ::after pseudo — no layout bleed */
+.ndot{width:7px;height:7px;border-radius:50%;border:1px solid #3a4460;cursor:pointer;transition:all .25s;position:relative;}
+.ndot::after{content:'';position:absolute;inset:-18px;border-radius:50%;}
 .ndot.on{background:#F0C020;border-color:#F0C020;transform:scale(1.2);}
 .nlbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8892b0;letter-spacing:2px;}
 
@@ -160,7 +161,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.6;}}
 
 /* ── MOBILE BOTTOM NAV ──────────────────────────── */
-#mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(6,11,20,0.97);border-top:1px solid #1a2540;height:54px;align-items:center;justify-content:space-between;padding:0 16px;}
+#mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(6,11,20,0.97);border-top:1px solid #1a2540;min-height:54px;align-items:center;justify-content:space-between;padding:0 16px;padding-bottom:env(safe-area-inset-bottom,0px);}
 /* UX FIX: mob-btn is 44px tall — meets Apple HIG tap target */
 .mob-btn{background:transparent;border:1px solid #3a4460;color:#ccd6f6;font-family:'JetBrains Mono',monospace;font-size:11px;padding:0 16px;height:36px;border-radius:3px;cursor:pointer;display:flex;align-items:center;}
 .mob-cur{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;letter-spacing:2px;}
@@ -209,7 +210,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     overflow-y:scroll;
     overflow-x:hidden;
     -webkit-overflow-scrolling:touch;
-    padding:60px 14px 72px;
+    padding-top:60px;
+    padding-left:14px;
+    padding-right:14px;
+    padding-bottom:calc(78px + env(safe-area-inset-bottom, 0px));
     align-items:flex-start;
     box-sizing:border-box;
     touch-action:pan-y;
@@ -278,7 +282,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   .h-name{font-size:44px;}
   .h-role{font-size:22px;}
   .sh{font-size:28px;}
-  .sl{padding:56px 10px 70px;}
+  .sl{padding-top:56px;padding-left:10px;padding-right:10px;padding-bottom:calc(74px + env(safe-area-inset-bottom, 0px));}
   .sl .glass{padding:14px 10px;}
   .contact-card{padding:18px 12px;}
   .ebl li{font-size:10px;line-height:1.5;}
