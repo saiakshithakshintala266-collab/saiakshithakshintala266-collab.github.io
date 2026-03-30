@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sai Akshith Akshintala | Full Stack & AI Engineer">
 <title>Sai Akshith Akshintala | Portfolio</title>
-<!-- v7 build: 2026-03-30 -->
+<!-- v8 build: 2026-03-30 | fix: mobile vertical scroll on Experience & Projects slides -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ9VPY3X77"></script>
 <script>
   window.dataLayer=window.dataLayer||[];
@@ -37,7 +37,6 @@ html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-u
 .logo{width:32px;height:32px;border:1.5px solid #F0C020;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);-webkit-clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;}
 .logo span{font-family:'Bebas Neue',sans-serif;color:#F0C020;font-size:13px;letter-spacing:1px;}
 .ndots{display:flex;gap:8px;align-items:center;}
-/* UX FIX: 44px tap target via ::after pseudo — no layout bleed */
 .ndot{width:7px;height:7px;border-radius:50%;border:1px solid #3a4460;cursor:pointer;transition:all .25s;position:relative;}
 .ndot::after{content:'';position:absolute;inset:-18px;border-radius:50%;}
 .ndot.on{background:#F0C020;border-color:#F0C020;transform:scale(1.2);}
@@ -50,13 +49,12 @@ html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-u
 #wrap{position:fixed;inset:0;z-index:1;overflow:hidden;}
 #track{display:flex;height:100vh;transition:transform .9s cubic-bezier(.77,0,.175,1);will-change:transform;}
 
-/* Desktop slide: vertically scrollable as overflow fallback */
+/* Desktop slide */
 .sl{
   flex:0 0 100vw;width:100vw;height:100vh;
   display:flex;align-items:center;
   padding:64px 64px 48px;
   position:relative;
-  /* UX FIX: allow content overflow on short viewports */
   overflow-y:auto;overflow-x:hidden;
 }
 
@@ -84,7 +82,6 @@ html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-u
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
 /* ── GLASS PANEL ────────────────────────────────── */
-/* UX FIX: reduced padding so content fits on 768–900px viewports */
 .glass{background:rgba(6,11,20,0.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(240,192,32,0.12);border-radius:8px;padding:32px 40px;}
 
 /* ── SECTION LABELS ─────────────────────────────── */
@@ -93,7 +90,6 @@ html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-u
 .ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:#2a3450;letter-spacing:2px;margin-bottom:18px;}
 
 /* ── ABOUT ──────────────────────────────────────── */
-/* UX FIX: gap reduced from 52px to 36px — more breathing room for content */
 .ag{display:grid;grid-template-columns:1fr 1fr;gap:36px;width:100%;align-items:start;}
 .qb{border-left:2px solid #F0C020;padding:12px 16px;background:#09101e;margin-bottom:16px;}
 .qt{font-style:italic;font-size:14px;color:#ccd6f6;line-height:1.7;margin-bottom:6px;}
@@ -139,7 +135,6 @@ html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-u
 .cert-issuer,.edu-school{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F0C020;margin-bottom:2px;}
 .cert-date,.edu-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:#2a3450;margin-bottom:10px;}
 .edu-gpa{font-family:'JetBrains Mono',monospace;font-size:11px;color:#5DCAA5;}
-/* UX FIX: cert verify link taller for easier tapping */
 .cert-verify{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#8892b0;text-decoration:none;border:1px solid #1a2540;padding:8px 12px;border-radius:3px;transition:all .2s;min-height:36px;}
 .cert-verify:hover{border-color:#F0C020;color:#F0C020;}
 .cert-verify svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;flex-shrink:0;}
@@ -148,7 +143,6 @@ html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-u
 .cg{width:100%;max-width:560px;}
 .ch{font-family:'Bebas Neue',sans-serif;font-size:60px;color:#ffffff;line-height:1;letter-spacing:2px;margin-bottom:14px;}
 .cp{font-family:'Inter',sans-serif;font-size:15px;color:#ccd6f6;line-height:1.85;max-width:340px;margin-bottom:24px;font-weight:400;}
-/* UX FIX: contact card padding safe for all screens */
 .contact-card{background:rgba(6,11,20,0.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(240,192,32,0.15);border-radius:8px;padding:40px;}
 .sr{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
 .sb{height:44px;padding:0 20px;border:1.5px solid #4a5568;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:13px;color:#ccd6f6;font-weight:500;transition:all .2s;border-radius:4px;}
@@ -162,13 +156,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 /* ── MOBILE BOTTOM NAV ──────────────────────────── */
 #mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(6,11,20,0.97);border-top:1px solid #1a2540;min-height:54px;align-items:center;justify-content:space-between;padding:0 16px;padding-bottom:env(safe-area-inset-bottom,0px);}
-/* UX FIX: mob-btn is 44px tall — meets Apple HIG tap target */
 .mob-btn{background:transparent;border:1px solid #3a4460;color:#ccd6f6;font-family:'JetBrains Mono',monospace;font-size:11px;padding:0 16px;height:36px;border-radius:3px;cursor:pointer;display:flex;align-items:center;}
 .mob-cur{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;letter-spacing:2px;}
 
 /* ════════════════════════════════════════════════
    TABLET (769px – 1024px)
-   UX FIX: added mid-breakpoint — was missing entirely
    ════════════════════════════════════════════════ */
 @media (max-width:1024px) and (min-width:769px){
   .glass{padding:24px 28px;}
@@ -184,7 +176,15 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 }
 
 /* ════════════════════════════════════════════════
-   MOBILE (≤ 768px) — complete overhaul
+   MOBILE (≤ 768px)
+   
+   KEY FIX: slides use height:100vh (not height:auto) so they form
+   a proper scroll context. overflow-y:auto then works correctly —
+   content that exceeds the visible area scrolls within the slide
+   instead of rendering offscreen and being unreachable.
+   
+   height:auto was the bug: slides grew to fit content, there was
+   nothing to overflow, and content beyond the fixed #wrap was lost.
    ════════════════════════════════════════════════ */
 @media (max-width:768px){
 
@@ -195,19 +195,21 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   .ndot{width:6px;height:6px;}
   #nav{padding:0 16px;height:48px;}
 
-  /* UX FIX: #wrap visible so slides can scroll vertically */
-  #wrap{overflow:visible;}
+  /* #wrap keeps overflow:hidden — off-screen slides must stay clipped.
+     The previous overflow:visible override was what allowed extra content
+     to paint outside the fixed container but made it unreachable. */
 
-  /* UX FIX: track height auto so slides can grow beyond viewport */
-  #track{height:auto;align-items:flex-start;}
+  /* #track stays at 100vh, only override align-items for mobile layout */
+  #track{align-items:flex-start;}
 
-  /* UX FIX: each slide independently scrollable, never clips content */
+  /* FIX: height:100vh creates the scroll context.
+     padding-top/bottom create clearance for the fixed top and bottom navs.
+     overflow-y:auto activates when content exceeds that padded inner space. */
   .sl{
     flex:0 0 100vw;
     width:100vw;
-    min-height:100vh;
-    height:auto;
-    overflow-y:scroll;
+    height:100vh;
+    overflow-y:auto;
     overflow-x:hidden;
     -webkit-overflow-scrolling:touch;
     padding-top:60px;
@@ -219,7 +221,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     touch-action:pan-y;
   }
 
-  /* UX FIX: glass panels never clip their content on mobile */
+  /* Glass panels expand to fit content — .sl is the scroll container */
   .sl .glass{
     height:auto !important;
     overflow:visible !important;
@@ -227,7 +229,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     width:100%;
   }
 
-  /* UX FIX: contact card safe padding on 375px */
+  /* Contact card safe padding on 375px */
   .contact-card{padding:24px 18px;}
 
   /* Hero */
@@ -235,7 +237,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   .h-name{font-size:54px;}
   .h-role{font-size:28px;margin-bottom:12px;}
   .h-bio{font-size:13px;max-width:100%;margin-bottom:24px;}
-  /* UX FIX: CTA button full-width on mobile */
   .gbtn{width:100%;text-align:center;justify-content:center;padding:14px;}
   .nudge{display:none;}
 
@@ -262,7 +263,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   .pt{font-size:18px;}
 
   /* Certs */
-  /* UX FIX: cert-verify already taller from base styles — keep it */
   .cert-name,.edu-deg{font-size:13px;}
 
   /* Contact */
@@ -272,7 +272,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   .sb{font-size:12px;padding:0 14px;height:42px;}
 
   #tag-cloud{gap:7px;}
-  #hud{display:none;}/* hide HUD on mobile — not useful */
+  #hud{display:none;}
 }
 
 /* ════════════════════════════════════════════════
@@ -282,7 +282,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   .h-name{font-size:44px;}
   .h-role{font-size:22px;}
   .sh{font-size:28px;}
-  .sl{padding-top:56px;padding-left:10px;padding-right:10px;padding-bottom:calc(74px + env(safe-area-inset-bottom, 0px));}
+  .sl{
+    padding-top:56px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:calc(74px + env(safe-area-inset-bottom, 0px));
+  }
   .sl .glass{padding:14px 10px;}
   .contact-card{padding:18px 12px;}
   .ebl li{font-size:10px;line-height:1.5;}
@@ -497,7 +502,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 <!-- S6: CONTACT -->
 <div class="sl">
   <div class="cg">
-    <!-- UX FIX: contact-card class replaces inline style — safer padding on all screens -->
     <div class="contact-card">
       <div class="sp" style="font-size:12px;letter-spacing:4px;">06 · WHAT'S NEXT</div>
       <div class="ch">GET IN<br>TOUCH</div>
@@ -533,10 +537,7 @@ if(!CanvasRenderingContext2D.prototype.roundRect){
 var N=7,cur=0,busy=false;
 var LABELS=['01/HERO','02/SUMMARY','03/SKILLS','04/EXPERIENCE','05/PROJECTS','06/CREDENTIALS','07/CONTACT'];
 
-// FIX: isMobile in outer scope — wheel listener needs it before THREE loads
 var isMobile=window.innerWidth<=768;
-
-// FIX: HL1/HL2 outer scope — go() can reference them before 3D inits
 var HL1=null,HL2=null;
 var accel=false,accTimer=null;
 
@@ -580,7 +581,6 @@ function go(idx){
     accTimer=setTimeout(function(){accel=false;},1400);
     hudEl.classList.add('on');
     hfEl.style.width='100%';
-    // FIX: 1600ms > 1.5s CSS transition on .hfill
     setTimeout(function(){
       hfEl.style.width='0';
       setTimeout(function(){hudEl.classList.remove('on');},400);
@@ -593,6 +593,7 @@ function go(idx){
   updNav();
   setTimeout(function(){
     ov.style.opacity='0';
+    /* Reset vertical scroll position when navigating to a new slide */
     var slides=document.querySelectorAll('.sl');
     if(slides[cur])slides[cur].scrollTop=0;
   },200);
@@ -623,7 +624,7 @@ window.addEventListener('touchstart',function(e){
 window.addEventListener('touchend',function(e){
   var dx=e.changedTouches[0].clientX-tx;
   var dy=e.changedTouches[0].clientY-ty;
-  // FIX: clear horizontal intent required — don't fight vertical scroll
+  /* Require clear horizontal intent — don't fight vertical scroll */
   if(Math.abs(dx)<60)return;
   if(Math.abs(dy)>Math.abs(dx)*0.5)return;
   dx<0?go(Math.min(cur+1,N-1)):go(Math.max(cur-1,0));
@@ -727,7 +728,6 @@ setTimeout(function(){
 },1200);
 
 /* ── init3D ────────────────────────────────────── */
-// FIX: ALL THREE.* calls are inside this function — nothing in outer scope
 function init3D(){
   if(typeof THREE==='undefined')return;
   var CAMS=[
@@ -756,7 +756,6 @@ function init3D(){
   gk.position.set(2,18,8);sc.add(gk);
   var dl=new THREE.DirectionalLight(0x1a3a80,2);
   dl.position.set(-12,6,-8);sc.add(dl);
-  // FIX: assign to outer-scope vars so go() can control them
   HL1=new THREE.SpotLight(0xffffff,0,20);HL1.position.set(-4,8,4);sc.add(HL1);
   HL2=new THREE.SpotLight(0x4488FF,0,20);HL2.position.set(4,8,-4);sc.add(HL2);
   var gnd=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0x040810,roughness:0.95}));
