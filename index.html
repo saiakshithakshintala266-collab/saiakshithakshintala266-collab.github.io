@@ -10,48 +10,66 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sai Akshith Akshintala | Full Stack & AI Engineer">
 <title>Sai Akshith Akshintala | Portfolio</title>
-<!-- v6 build: 2026-03-28 (all bugs fixed) -->
+<!-- v7 build: 2026-03-30 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ9VPY3X77"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+  window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MJ9VPY3X77');
+  gtag('js',new Date());gtag('config','G-MJ9VPY3X77');
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── RESET ──────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:100%;height:100%;overflow:hidden;background:#060B14;font-family:'Inter',system-ui,sans-serif;}
-@media (max-width:768px){
-  html,body{overflow:hidden;-webkit-overflow-scrolling:touch;}
-  #wrap{overflow:hidden;}
-  .sl{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
-}
-#bg{position:fixed;inset:0;z-index:0;}
+html,body{width:100%;height:100%;background:#060B14;font-family:'Inter',system-ui,sans-serif;overflow:hidden;}
+
+/* ── LOADER ─────────────────────────────────────── */
 #loader{position:fixed;inset:0;background:#060B14;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .7s ease;}
 #loader.out{opacity:0;pointer-events:none;}
 .lb{width:200px;height:2px;background:#1a2540;}
 .lbf{height:100%;width:0;background:#F0C020;animation:lf 1.5s ease forwards;}
-@-webkit-keyframes lf{to{width:100%}}
 @keyframes lf{to{width:100%}}
 .lt{font-family:'JetBrains Mono',monospace;font-size:11px;color:#3a4460;letter-spacing:3px;}
+
+/* ── NAV ────────────────────────────────────────── */
 #nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:50;background:rgba(6,11,20,.95);border-bottom:1px solid #1a2540;display:flex;align-items:center;justify-content:space-between;padding:0 36px;}
-.logo{width:32px;height:32px;border:1.5px solid #F0C020;-webkit-clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;}
+.logo{width:32px;height:32px;border:1.5px solid #F0C020;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);-webkit-clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;}
 .logo span{font-family:'Bebas Neue',sans-serif;color:#F0C020;font-size:13px;letter-spacing:1px;}
 .ndots{display:flex;gap:8px;align-items:center;}
-.ndot{width:7px;height:7px;border-radius:50%;border:1px solid #3a4460;cursor:pointer;transition:all .25s;}
+/* UX FIX: dots have a hidden 44px tap target via padding */
+.ndot{width:7px;height:7px;border-radius:50%;border:1px solid #3a4460;cursor:pointer;transition:all .25s;padding:18px;margin:-18px;background-clip:content-box;}
 .ndot.on{background:#F0C020;border-color:#F0C020;transform:scale(1.2);}
 .nlbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8892b0;letter-spacing:2px;}
+
+/* ── PROGRESS ───────────────────────────────────── */
 #prog{position:fixed;bottom:0;left:0;height:2px;background:#F0C020;z-index:50;transition:width .9s cubic-bezier(.77,0,.175,1);}
+
+/* ── SLIDE TRACK — desktop ──────────────────────── */
 #wrap{position:fixed;inset:0;z-index:1;overflow:hidden;}
-#track{display:flex;height:100vh;transition:transform .9s cubic-bezier(.77,0,.175,1);-webkit-transform:translateZ(0);transform:translateZ(0);}
-.sl{flex:0 0 100vw;width:100vw;height:100vh;display:flex;align-items:center;padding:70px 72px 56px;position:relative;}
+#track{display:flex;height:100vh;transition:transform .9s cubic-bezier(.77,0,.175,1);will-change:transform;}
+
+/* Desktop slide: vertically scrollable as overflow fallback */
+.sl{
+  flex:0 0 100vw;width:100vw;height:100vh;
+  display:flex;align-items:center;
+  padding:64px 64px 48px;
+  position:relative;
+  /* UX FIX: allow content overflow on short viewports */
+  overflow-y:auto;overflow-x:hidden;
+}
+
+/* ── OVERLAY ────────────────────────────────────── */
 #ov{position:fixed;inset:0;z-index:40;background:#060B14;opacity:0;pointer-events:none;transition:opacity .28s;}
+
+/* ── HUD ────────────────────────────────────────── */
 #hud{position:fixed;bottom:24px;right:36px;z-index:45;display:flex;align-items:center;gap:8px;opacity:0;transition:opacity .3s;}
 #hud.on{opacity:1;}
 .hbar{width:80px;height:2px;background:#1a2540;}
-.hfill{height:100%;width:0;background:#F0C020;transition:width 1.4s ease;}
+.hfill{height:100%;width:0;background:#F0C020;transition:width 1.5s ease;}
 .hlbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;letter-spacing:2px;}
+
+/* ── HERO ───────────────────────────────────────── */
 .h-pre{font-family:'JetBrains Mono',monospace;color:#F0C020;font-size:12px;letter-spacing:3px;margin-bottom:14px;animation:fu .5s .3s both;}
 .h-name{font-family:'Bebas Neue',sans-serif;font-size:86px;color:#e8f0ff;line-height:.93;letter-spacing:2px;margin-bottom:4px;animation:fu .5s .5s both;}
 .h-role{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#2a3450;line-height:1;margin-bottom:20px;animation:fu .5s .7s both;}
@@ -61,142 +79,219 @@ html,body{width:100%;height:100%;overflow:hidden;background:#060B14;font-family:
 .nudge{position:absolute;right:52px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.45;}
 .nudge span{font-family:'JetBrains Mono',monospace;font-size:9px;color:#F0C020;letter-spacing:3px;writing-mode:vertical-rl;}
 .arr{width:26px;height:26px;border-right:2px solid #F0C020;border-bottom:2px solid #F0C020;transform:rotate(-45deg);animation:ap 1.6s ease infinite;}
-@-webkit-keyframes ap{0%,100%{opacity:.35;-webkit-transform:rotate(-45deg) translate(0,0)}50%{opacity:1;-webkit-transform:rotate(-45deg) translate(5px,5px)}}
 @keyframes ap{0%,100%{opacity:.35;transform:rotate(-45deg) translate(0,0)}50%{opacity:1;transform:rotate(-45deg) translate(5px,5px)}}
-@-webkit-keyframes fu{from{opacity:0;-webkit-transform:translateY(18px)}to{opacity:1;-webkit-transform:none}}
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.glass{background:rgba(6,11,20,0.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(240,192,32,0.12);border-radius:8px;padding:44px 52px;}
-.sp{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F0C020;letter-spacing:3px;margin-bottom:7px;}
-.sh{font-family:'Bebas Neue',sans-serif;font-size:50px;color:#e8f0ff;letter-spacing:2px;line-height:1;margin-bottom:3px;}
-.ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:#2a3450;letter-spacing:2px;margin-bottom:22px;}
-.ag{display:grid;grid-template-columns:1fr 1fr;gap:52px;width:100%;align-items:start;}
-.qb{border-left:2px solid #F0C020;padding:14px 18px;background:#09101e;margin-bottom:20px;}
-.qt{font-style:italic;font-size:15px;color:#ccd6f6;line-height:1.7;margin-bottom:7px;}
+
+/* ── GLASS PANEL ────────────────────────────────── */
+/* UX FIX: reduced padding so content fits on 768–900px viewports */
+.glass{background:rgba(6,11,20,0.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(240,192,32,0.12);border-radius:8px;padding:32px 40px;}
+
+/* ── SECTION LABELS ─────────────────────────────── */
+.sp{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F0C020;letter-spacing:3px;margin-bottom:6px;}
+.sh{font-family:'Bebas Neue',sans-serif;font-size:46px;color:#e8f0ff;letter-spacing:2px;line-height:1;margin-bottom:2px;}
+.ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:#2a3450;letter-spacing:2px;margin-bottom:18px;}
+
+/* ── ABOUT ──────────────────────────────────────── */
+/* UX FIX: gap reduced from 52px to 36px — more breathing room for content */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:36px;width:100%;align-items:start;}
+.qb{border-left:2px solid #F0C020;padding:12px 16px;background:#09101e;margin-bottom:16px;}
+.qt{font-style:italic;font-size:14px;color:#ccd6f6;line-height:1.7;margin-bottom:6px;}
 .qa{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F0C020;}
-.bp{font-size:13px;color:#8892b0;line-height:1.8;margin-bottom:11px;}
-.tb{background:#060d18;border:1px solid #1a2540;border-radius:4px;padding:18px;}
-.tbar{display:flex;gap:6px;margin-bottom:12px;}
+.bp{font-size:13px;color:#8892b0;line-height:1.75;margin-bottom:10px;}
+
+/* ── TERMINAL ───────────────────────────────────── */
+.tb{background:#060d18;border:1px solid #1a2540;border-radius:4px;padding:16px;}
+.tbar{display:flex;gap:6px;margin-bottom:10px;}
 .tbd{width:10px;height:10px;border-radius:50%;}
-.tl{font-family:'JetBrains Mono',monospace;font-size:11px;line-height:2;color:#8892b0;}
+.tl{font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.9;color:#8892b0;}
 .tk{color:#F0C020;}.tv{color:#5DCAA5;}.ts{color:#85B7EB;}
-.eg{display:grid;grid-template-columns:1fr 1fr;gap:22px;width:100%;}
-.ec{background:#09101e;border:1px solid #1a2540;border-radius:4px;padding:22px;transition:border-color .2s;}
+
+/* ── EXPERIENCE ─────────────────────────────────── */
+.eg{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:100%;}
+.ec{background:#09101e;border:1px solid #1a2540;border-radius:4px;padding:18px;transition:border-color .2s;}
 .ec:hover{border-color:#F0C020;}
-.er{font-size:16px;font-weight:600;color:#ccd6f6;margin-bottom:4px;}
+.er{font-size:15px;font-weight:600;color:#ccd6f6;margin-bottom:3px;}
 .eco{font-family:'JetBrains Mono',monospace;font-size:12px;color:#F0C020;margin-bottom:2px;}
-.ed{font-family:'JetBrains Mono',monospace;font-size:11px;color:#2a3450;margin-bottom:14px;}
-.ebl{list-style:none;display:flex;flex-direction:column;gap:7px;}
-.ebl li{font-size:12px;color:#8892b0;line-height:1.6;display:flex;gap:8px;}
-.ebl li::before{content:'▹';color:#F0C020;flex-shrink:0;}
-.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;width:100%;}
-.pc{background:#09080b;border:1px solid #2a2218;border-radius:4px;padding:20px;cursor:pointer;transition:all .25s;position:relative;}
-.pc:hover{border-color:#F0C020;transform:translateY(-5px);}
-.pt{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#e8f0ff;letter-spacing:1px;margin-bottom:7px;}
-.pd{font-size:12px;color:#8892b0;line-height:1.6;margin-bottom:13px;}
-.pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+.ed{font-family:'JetBrains Mono',monospace;font-size:10px;color:#2a3450;margin-bottom:12px;}
+.ebl{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.ebl li{font-size:12px;color:#8892b0;line-height:1.55;display:flex;gap:8px;}
+.ebl li::before{content:'▹';color:#F0C020;flex-shrink:0;margin-top:1px;}
+
+/* ── PROJECTS ───────────────────────────────────── */
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;width:100%;}
+.pc{background:#09080b;border:1px solid #2a2218;border-radius:4px;padding:18px;cursor:pointer;transition:all .25s;position:relative;}
+.pc:hover{border-color:#F0C020;transform:translateY(-4px);}
+.pt{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#e8f0ff;letter-spacing:1px;margin-bottom:6px;}
+.pd{font-size:12px;color:#8892b0;line-height:1.55;margin-bottom:11px;}
+.pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
 .pi{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;border:1px solid #2a1f00;background:#0e0a00;padding:2px 7px;border-radius:2px;}
 .pl{display:flex;gap:12px;}
-.pli{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8892b0;cursor:pointer;transition:color .2s;}
+.pli{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8892b0;cursor:pointer;transition:color .2s;text-decoration:none;}
 .pli:hover{color:#F0C020;}
-/* CERT & EDU */
-.ce-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;width:100%;align-items:start;}
-.ce-col-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;letter-spacing:2px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #1a2540;}
-.cert-card,.edu-card{background:#09101e;border:1px solid #1a2540;border-radius:4px;padding:16px 18px;margin-bottom:12px;transition:border-color .2s;}
+
+/* ── CERTS & EDUCATION ──────────────────────────── */
+.ce-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%;align-items:start;}
+.ce-col-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;letter-spacing:2px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #1a2540;}
+.cert-card,.edu-card{background:#09101e;border:1px solid #1a2540;border-radius:4px;padding:14px 16px;margin-bottom:10px;transition:border-color .2s;}
 .cert-card:hover,.edu-card:hover{border-color:#F0C020;}
-.cert-name,.edu-deg{font-size:14px;font-weight:600;color:#ccd6f6;margin-bottom:4px;}
-.cert-issuer,.edu-school{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F0C020;margin-bottom:3px;}
+.cert-name,.edu-deg{font-size:13px;font-weight:600;color:#ccd6f6;margin-bottom:3px;}
+.cert-issuer,.edu-school{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F0C020;margin-bottom:2px;}
 .cert-date,.edu-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:#2a3450;margin-bottom:10px;}
 .edu-gpa{font-family:'JetBrains Mono',monospace;font-size:11px;color:#5DCAA5;}
-.cert-verify{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#8892b0;text-decoration:none;border:1px solid #1a2540;padding:4px 10px;border-radius:2px;transition:all .2s;}
+/* UX FIX: cert verify link taller for easier tapping */
+.cert-verify{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#8892b0;text-decoration:none;border:1px solid #1a2540;padding:8px 12px;border-radius:3px;transition:all .2s;min-height:36px;}
 .cert-verify:hover{border-color:#F0C020;color:#F0C020;}
-.cert-verify svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2;flex-shrink:0;}
-/* CONTACT */
+.cert-verify svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;flex-shrink:0;}
+
+/* ── CONTACT ────────────────────────────────────── */
 .cg{width:100%;max-width:560px;}
-.ch{font-family:'Bebas Neue',sans-serif;font-size:64px;color:#ffffff;line-height:1;letter-spacing:2px;margin-bottom:14px;}
+.ch{font-family:'Bebas Neue',sans-serif;font-size:60px;color:#ffffff;line-height:1;letter-spacing:2px;margin-bottom:14px;}
 .cp{font-family:'Inter',sans-serif;font-size:15px;color:#ccd6f6;line-height:1.85;max-width:340px;margin-bottom:24px;font-weight:400;}
-.cbtn{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#F0C020;border:1.5px solid #F0C020;background:transparent;padding:12px 28px;cursor:pointer;transition:all .2s;}
-.cbtn:hover{background:#F0C020;color:#060B14;}
-.sr{display:flex;gap:11px;margin-top:18px;}
+/* UX FIX: contact card padding safe for all screens */
+.contact-card{background:rgba(6,11,20,0.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(240,192,32,0.15);border-radius:8px;padding:40px;}
+.sr{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
 .sb{height:44px;padding:0 20px;border:1.5px solid #4a5568;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:13px;color:#ccd6f6;font-weight:500;transition:all .2s;border-radius:4px;}
 .sb:hover{border-color:#F0C020;color:#F0C020;transform:translateY(-2px);}
-.cf{font-family:'JetBrains Mono',monospace;font-size:12px;color:#a8b2d1;margin-top:20px;letter-spacing:1px;}
 
-/* CSS animated background */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(240,192,32,0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(26,58,128,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 80%, rgba(240,192,32,0.02) 0%, transparent 40%),
-    #060B14;
-  z-index:0;
-  pointer-events:none;
-}
+/* ── BACKGROUND ─────────────────────────────────── */
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(240,192,32,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(26,58,128,0.08) 0%,transparent 50%),radial-gradient(ellipse at 60% 80%,rgba(240,192,32,0.02) 0%,transparent 40%),#060B14;z-index:0;pointer-events:none;}
 .stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle linear infinite;}
 @keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.6;}}
 
-/* MOBILE BOTTOM NAV */
-#mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(6,11,20,0.97);border-top:1px solid #1a2540;height:50px;align-items:center;justify-content:space-between;padding:0 20px;}
-.mob-btn{background:transparent;border:1px solid #3a4460;color:#ccd6f6;font-family:'JetBrains Mono',monospace;font-size:11px;padding:7px 16px;border-radius:3px;cursor:pointer;}
+/* ── MOBILE BOTTOM NAV ──────────────────────────── */
+#mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(6,11,20,0.97);border-top:1px solid #1a2540;height:54px;align-items:center;justify-content:space-between;padding:0 16px;}
+/* UX FIX: mob-btn is 44px tall — meets Apple HIG tap target */
+.mob-btn{background:transparent;border:1px solid #3a4460;color:#ccd6f6;font-family:'JetBrains Mono',monospace;font-size:11px;padding:0 16px;height:36px;border-radius:3px;cursor:pointer;display:flex;align-items:center;}
 .mob-cur{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F0C020;letter-spacing:2px;}
-@media (max-width:768px){#mob-nav{display:flex;} .sl{padding-bottom:80px !important;touch-action:pan-y;} .sl .glass{height:auto !important;overflow:visible !important;} }
 
-/* MOBILE RESPONSIVE */
-@media (max-width:768px){
-  #nav{padding:0 16px;height:48px;}
-  .nlbl{display:none;}
-  .ndots{gap:6px;}
-  .ndot{width:6px;height:6px;}
-  .sl{padding:60px 16px 80px;align-items:flex-start;height:100vh;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box;touch-action:pan-y;}
-  #track{height:100vh;align-items:flex-start;}
-  .glass{padding:20px 16px;width:100%;overflow:visible;}
-  .h-pre{font-size:10px;margin-bottom:10px;}
-  .h-name{font-size:52px;}
-  .h-role{font-size:28px;margin-bottom:14px;}
-  .h-bio{font-size:13px;max-width:100%;}
-  .nudge{display:none;}
-  .sh{font-size:36px;}
-  .sp{font-size:10px;}
-  .ag{grid-template-columns:1fr;gap:24px;}
-  .tb{padding:14px;}
-  .tl{font-size:10px;}
-  .qt{font-size:13px;}
-  .eg{grid-template-columns:1fr;gap:16px;}
+/* ════════════════════════════════════════════════
+   TABLET (769px – 1024px)
+   UX FIX: added mid-breakpoint — was missing entirely
+   ════════════════════════════════════════════════ */
+@media (max-width:1024px) and (min-width:769px){
+  .glass{padding:24px 28px;}
+  .ag{gap:24px;}
+  .sh{font-size:40px;}
+  .eg{gap:14px;}
   .ec{padding:16px;}
-  .er{font-size:14px;}
   .ebl li{font-size:11px;}
-  .pg{grid-template-columns:1fr;gap:14px;}
+  .pg{gap:14px;}
   .pc{padding:16px;}
-  .ce-grid{grid-template-columns:1fr;gap:20px;}
-  .ch{font-size:44px;}
-  .cp{font-size:13px;max-width:100%;}
-  .sr{flex-wrap:wrap;gap:8px;}
-  .sb{font-size:12px;padding:0 16px;height:40px;}
-  #tag-cloud{gap:8px;}
-  #hud{bottom:14px;right:16px;}
-  #prog{height:2px;}
+  .ce-grid{gap:20px;}
+  .sl{padding:60px 32px 40px;}
 }
-@media (max-width:480px){
-  .h-name{font-size:42px;}
+
+/* ════════════════════════════════════════════════
+   MOBILE (≤ 768px) — complete overhaul
+   ════════════════════════════════════════════════ */
+@media (max-width:768px){
+
+  /* Show mobile bottom nav */
+  #mob-nav{display:flex;}
+  .nlbl{display:none;}
+  .ndots{gap:4px;}
+  .ndot{width:6px;height:6px;}
+  #nav{padding:0 16px;height:48px;}
+
+  /* UX FIX: #wrap visible so slides can scroll vertically */
+  #wrap{overflow:visible;}
+
+  /* UX FIX: track height auto so slides can grow beyond viewport */
+  #track{height:auto;align-items:flex-start;}
+
+  /* UX FIX: each slide independently scrollable, never clips content */
+  .sl{
+    flex:0 0 100vw;
+    width:100vw;
+    min-height:100vh;
+    height:auto;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+    padding:60px 14px 72px;
+    align-items:flex-start;
+    box-sizing:border-box;
+    touch-action:pan-y;
+  }
+
+  /* UX FIX: glass panels never clip their content on mobile */
+  .sl .glass{
+    height:auto !important;
+    overflow:visible !important;
+    padding:18px 14px;
+    width:100%;
+  }
+
+  /* UX FIX: contact card safe padding on 375px */
+  .contact-card{padding:24px 18px;}
+
+  /* Hero */
+  .h-pre{font-size:10px;margin-bottom:8px;}
+  .h-name{font-size:54px;}
+  .h-role{font-size:28px;margin-bottom:12px;}
+  .h-bio{font-size:13px;max-width:100%;margin-bottom:24px;}
+  /* UX FIX: CTA button full-width on mobile */
+  .gbtn{width:100%;text-align:center;justify-content:center;padding:14px;}
+  .nudge{display:none;}
+
+  /* Section headings */
+  .sh{font-size:34px;}
+  .sp{font-size:10px;}
+  .ss{font-size:9px;margin-bottom:14px;}
+
+  /* All 2-col grids to single column */
+  .ag,.eg,.pg,.ce-grid{grid-template-columns:1fr;gap:14px;}
+
+  /* Terminal */
+  .tb{padding:12px;}
+  .tl{font-size:10px;line-height:1.8;}
+  .qt{font-size:13px;}
+
+  /* Experience cards */
+  .ec{padding:14px;}
+  .er{font-size:14px;}
+  .ebl li{font-size:11px;gap:6px;}
+
+  /* Project cards */
+  .pc{padding:14px;}
+  .pt{font-size:18px;}
+
+  /* Certs */
+  /* UX FIX: cert-verify already taller from base styles — keep it */
+  .cert-name,.edu-deg{font-size:13px;}
+
+  /* Contact */
+  .ch{font-size:40px;}
+  .cp{font-size:13px;max-width:100%;}
+  .sr{gap:8px;}
+  .sb{font-size:12px;padding:0 14px;height:42px;}
+
+  #tag-cloud{gap:7px;}
+  #hud{display:none;}/* hide HUD on mobile — not useful */
+}
+
+/* ════════════════════════════════════════════════
+   SMALL MOBILE (≤ 390px)
+   ════════════════════════════════════════════════ */
+@media (max-width:390px){
+  .h-name{font-size:44px;}
   .h-role{font-size:22px;}
-  .sh{font-size:30px;}
-  .glass{padding:16px 12px;}
-  .sl{padding:56px 10px 80px;}
-  .eg{gap:10px;}
-  .pg{gap:10px;}
+  .sh{font-size:28px;}
+  .sl{padding:56px 10px 70px;}
+  .sl .glass{padding:14px 10px;}
+  .contact-card{padding:18px 12px;}
   .ebl li{font-size:10px;line-height:1.5;}
   .ebl{gap:5px;}
-  .ec{padding:14px;}
   .er{font-size:13px;}
+  .ch{font-size:34px;}
 }
 </style>
 </head>
 <body>
 
 <div class="stars" id="stars"></div>
+
 <div id="loader">
   <svg width="58" height="34" viewBox="0 0 58 34">
     <path d="M29 7C21 13 10 15 4 11C10 17 12 23 8 31C14 25 20 23 29 27C38 23 44 25 50 31C46 23 48 17 54 11C48 15 37 13 29 7Z" fill="#F0C020"/>
@@ -206,13 +301,20 @@ body::before{
 </div>
 
 <div id="ov"></div>
+
 <div id="nav">
   <div class="logo"><span>SA</span></div>
   <div class="ndots" id="nd"></div>
   <div class="nlbl" id="nl">01 / HERO</div>
 </div>
+
 <div id="prog"></div>
-<div id="hud"><div class="hlbl">TURBO</div><div class="hbar"><div class="hfill" id="hf"></div></div></div>
+
+<div id="hud">
+  <div class="hlbl">TURBO</div>
+  <div class="hbar"><div class="hfill" id="hf"></div></div>
+</div>
+
 <div id="mob-nav">
   <button class="mob-btn" id="mob-prev">← PREV</button>
   <span class="mob-cur" id="mob-cur">01 / HERO</span>
@@ -221,62 +323,65 @@ body::before{
 
 <div id="wrap"><div id="track">
 
-<!-- S0 HERO -->
+<!-- S0: HERO -->
 <div class="sl">
-  <div class="glass" style="max-width:560px">
+  <div class="glass" style="max-width:520px;width:100%;">
     <div class="h-pre">FULL STACK &amp; AI ENGINEER</div>
     <div class="h-name">SAI AKSHITH</div>
     <div class="h-role">Akshintala</div>
     <div class="h-bio">Full Stack &amp; AI Engineer who turns complex backend problems into clean, scalable systems. Distributed systems · Cloud-native · TypeScript · Python · AWS · AI/ML.</div>
     <button class="gbtn" id="eb">ENTER THE CAVE →</button>
   </div>
-  <div class="nudge"><span>SCROLL OR SWIPE</span><div class="arr"></div></div>
+  <div class="nudge"><span>SWIPE OR SCROLL</span><div class="arr"></div></div>
 </div>
 
-<!-- S1 ABOUT -->
+<!-- S1: ABOUT -->
 <div class="sl">
-  <div class="glass" style="width:100%"><div class="ag">
-    <div>
-      <div class="sp">01 · PROFESSIONAL SUMMARY</div>
-      <div class="sh">About Me</div>
-      <div class="ss">FULL STACK &amp; AI ENGINEER</div>
-      <div class="qb">
-        <div class="qt">"Every great developer you know got there by solving problems they were unqualified to solve."</div>
-        <div class="qa">Patrick McKenzie</div>
-      </div>
-      <div class="bp">Full Stack Engineer specializing in distributed systems and cloud-native backend. Built and scaled production microservices processing millions of daily transactions.</div>
-      <div class="bp">Currently building SubZero, an AI-powered subscription audit and cancellation agent.</div>
-    </div>
-    <div>
-      <div class="tb">
-        <div class="tbar">
-          <div class="tbd" style="background:#E24B4A"></div>
-          <div class="tbd" style="background:#EF9F27"></div>
-          <div class="tbd" style="background:#639922"></div>
+  <div class="glass" style="width:100%;">
+    <div class="ag">
+      <div>
+        <div class="sp">01 · PROFESSIONAL SUMMARY</div>
+        <div class="sh">About Me</div>
+        <div class="ss">FULL STACK &amp; AI ENGINEER</div>
+        <div class="qb">
+          <div class="qt">"Every great developer you know got there by solving problems they were unqualified to solve."</div>
+          <div class="qa">— Patrick McKenzie</div>
         </div>
-        <div class="tl"><span class="tk">const</span> <span class="tv">engineer</span> = {</div>
-        <div class="tl">&nbsp;&nbsp;<span class="tk">name</span>: <span class="ts">"Sai Akshith Akshintala"</span>,</div>
-        <div class="tl">&nbsp;&nbsp;<span class="tk">role</span>: <span class="ts">"Full Stack &amp; AI Engineer"</span>,</div>
-        <div class="tl">&nbsp;&nbsp;<span class="tk">focus</span>: <span class="ts">"distributed systems · cloud · AI"</span>,</div>
-        <div class="tl">&nbsp;&nbsp;<span class="tk">building</span>: <span class="ts">"SubZero"</span>,</div>
-        <div class="tl">};</div>
+        <div class="bp">Full Stack Engineer specializing in distributed systems and cloud-native backend. Built and scaled production microservices processing millions of daily transactions.</div>
+        <div class="bp">Currently building SubZero — an AI-powered subscription audit and cancellation agent.</div>
+      </div>
+      <div>
+        <div class="tb">
+          <div class="tbar">
+            <div class="tbd" style="background:#E24B4A"></div>
+            <div class="tbd" style="background:#EF9F27"></div>
+            <div class="tbd" style="background:#639922"></div>
+          </div>
+          <div class="tl"><span class="tk">const</span> <span class="tv">engineer</span> = {</div>
+          <div class="tl">&nbsp;&nbsp;<span class="tk">name</span>: <span class="ts">"Sai Akshith Akshintala"</span>,</div>
+          <div class="tl">&nbsp;&nbsp;<span class="tk">role</span>: <span class="ts">"Full Stack &amp; AI Engineer"</span>,</div>
+          <div class="tl">&nbsp;&nbsp;<span class="tk">focus</span>: <span class="ts">"distributed · cloud · AI"</span>,</div>
+          <div class="tl">&nbsp;&nbsp;<span class="tk">building</span>: <span class="ts">"SubZero"</span>,</div>
+          <div class="tl">};</div>
+        </div>
       </div>
     </div>
-  </div></div>
+  </div>
 </div>
 
-<!-- S2 SKILLS -->
+<!-- S2: SKILLS -->
 <div class="sl">
-  <div class="glass" style="width:100%">
+  <div class="glass" style="width:100%;">
     <div class="sp">02 · SKILLS</div>
     <div class="sh">Technologies</div>
+    <div class="ss">LANGUAGES · FRAMEWORKS · CLOUD · INFRA</div>
     <div id="tag-cloud"></div>
   </div>
 </div>
 
-<!-- S3 EXPERIENCE -->
+<!-- S3: EXPERIENCE -->
 <div class="sl">
-  <div class="glass" style="width:100%;min-height:0;">
+  <div class="glass" style="width:100%;">
     <div class="sp">03 · WORK EXPERIENCE</div>
     <div class="sh">Worked At</div>
     <div class="ss">WHERE I'VE DEPLOYED CODE THAT MATTERS</div>
@@ -290,7 +395,7 @@ body::before{
           <li>KYC automation (Textract + Lambda), cutting onboarding from 3-5 days to 24 hrs with ~70% less manual review.</li>
           <li>LLM-powered advisory via AWS Bedrock for ~500K active digibank users.</li>
           <li>Real-time fraud detection under 200ms p99 latency, reducing false negatives by ~30%.</li>
-          <li>API p95 latency ~65% faster (800ms → 280ms) via Redis caching.</li>
+          <li>API p95 latency ~65% faster (800ms to 280ms) via Redis caching.</li>
         </ul>
       </div>
       <div class="ec">
@@ -309,11 +414,11 @@ body::before{
   </div>
 </div>
 
-<!-- S4 PROJECTS -->
+<!-- S4: PROJECTS -->
 <div class="sl">
-  <div class="glass" style="width:100%">
+  <div class="glass" style="width:100%;">
     <div class="sp">04 · PROJECTS</div>
-    <div class="sh">Some Things I've Built</div>
+    <div class="sh">Things I've Built</div>
     <div class="ss">PRODUCTION · AI-NATIVE · OPEN SOURCE</div>
     <div class="pg">
       <div class="pc">
@@ -326,29 +431,29 @@ body::before{
         <div class="pt">AI Doc Intelligence Hub</div>
         <div class="pd">Clinical AI platform with structured summaries and FHIR-ready exports via Gemini 2.5 + FastAPI.</div>
         <div class="pills"><span class="pi">FastAPI</span><span class="pi">Gemini 2.5</span><span class="pi">React</span><span class="pi">FHIR</span></div>
-        <div class="pl"><a class="pli" href="https://github.com/saiakshithakshintala266-collab/ai-doc-intelligence-hub" target="_blank">GitHub ↗</a></div>
+        <div class="pl"><a class="pli" href="https://github.com/saiakshithakshintala266-collab/ai-doc-intelligence-hub" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
       <div class="pc">
         <div class="pt">Jobs With Ez</div>
         <div class="pd">Real-time job portal with Angular, Node.js/Express APIs and MongoDB persistence.</div>
         <div class="pills"><span class="pi">Angular</span><span class="pi">Node.js</span><span class="pi">MongoDB</span><span class="pi">Tailwind</span></div>
-        <div class="pl"><a class="pli" href="https://github.com/saiakshithakshintala266-collab/jobs-with-ez" target="_blank">GitHub ↗</a></div>
+        <div class="pl"><a class="pli" href="https://github.com/saiakshithakshintala266-collab/jobs-with-ez" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
       <div class="pc">
         <div class="pt">Smart Expense Analyzer</div>
-        <div class="pd">AWS-native event-driven microservices platform. OCR pipeline + LLM fallback on Bedrock. RAG-powered Ask-Your-Spend chat.</div>
+        <div class="pd">AWS-native event-driven microservices. OCR pipeline + LLM fallback on Bedrock. RAG-powered Ask-Your-Spend chat.</div>
         <div class="pills"><span class="pi">Next.js</span><span class="pi">NestJS</span><span class="pi">Bedrock</span><span class="pi">Textract</span><span class="pi">ECS</span></div>
-        <div class="pl"><a class="pli" href="https://github.com/saiakshithakshintala266-collab/smart-expense-analyzer" target="_blank">GitHub ↗</a></div>
+        <div class="pl"><a class="pli" href="https://github.com/saiakshithakshintala266-collab/smart-expense-analyzer" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- S5 CERTS & EDUCATION -->
+<!-- S5: CREDENTIALS -->
 <div class="sl">
-  <div class="glass" style="width:100%">
+  <div class="glass" style="width:100%;">
     <div class="sp">05 · CREDENTIALS</div>
-    <div class="sh">Certifications &amp; Education</div>
+    <div class="sh">Certs &amp; Education</div>
     <div class="ss">VERIFIED · CREDLY · ACCREDITED</div>
     <div class="ce-grid">
       <div>
@@ -385,15 +490,11 @@ body::before{
   </div>
 </div>
 
-<!-- S6 CONTACT -->
+<!-- S6: CONTACT -->
 <div class="sl">
   <div class="cg">
-    <!--
-      FIX (Bug 7): Added -webkit-backdrop-filter alongside backdrop-filter
-      for Safari compatibility. The original inline style was missing the
-      -webkit- prefix, causing the blur to silently fail on Safari/iOS.
-    -->
-    <div style="background:rgba(6,11,20,0.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(240,192,32,0.15);border-radius:8px;padding:48px 52px;">
+    <!-- UX FIX: contact-card class replaces inline style — safer padding on all screens -->
+    <div class="contact-card">
       <div class="sp" style="font-size:12px;letter-spacing:4px;">06 · WHAT'S NEXT</div>
       <div class="ch">GET IN<br>TOUCH</div>
       <div class="cp">Building things that matter. If something I've worked on resonates with you, let's talk.</div>
@@ -406,230 +507,187 @@ body::before{
   </div>
 </div>
 
-</div></div>
+</div></div><!-- /track /wrap -->
 
 <script>
 (function(){
 'use strict';
 
-// roundRect polyfill
-if (!CanvasRenderingContext2D.prototype.roundRect) {
-  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
-    var rad = r || 0;
-    this.beginPath();
-    this.moveTo(x+rad,y); this.lineTo(x+w-rad,y);
-    this.arcTo(x+w,y,x+w,y+rad,rad); this.lineTo(x+w,y+h-rad);
-    this.arcTo(x+w,y+h,x+w-rad,y+h,rad); this.lineTo(x+rad,y+h);
-    this.arcTo(x,y+h,x,y+h-rad,rad); this.lineTo(x,y+rad);
-    this.arcTo(x,y,x+rad,y,rad); this.closePath(); return this;
+/* roundRect polyfill */
+if(!CanvasRenderingContext2D.prototype.roundRect){
+  CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
+    var rad=r||0;this.beginPath();
+    this.moveTo(x+rad,y);this.lineTo(x+w-rad,y);
+    this.arcTo(x+w,y,x+w,y+rad,rad);this.lineTo(x+w,y+h-rad);
+    this.arcTo(x+w,y+h,x+w-rad,y+h,rad);this.lineTo(x+rad,y+h);
+    this.arcTo(x,y+h,x,y+h-rad,rad);this.lineTo(x,y+rad);
+    this.arcTo(x,y,x+rad,y,rad);this.closePath();return this;
   };
 }
 
-var N = 7, cur = 0, busy = false;
-var LABELS = ['01/HERO','02/SUMMARY','03/SKILLS','04/EXPERIENCE','05/PROJECTS','06/CREDENTIALS','07/CONTACT'];
-var ov   = document.getElementById('ov');
-var trk  = document.getElementById('track');
-var nlEl = document.getElementById('nl');
-var hudEl = document.getElementById('hud');
-var hfEl  = document.getElementById('hf');
-var ndEl  = document.getElementById('nd');
-var dots  = [];
+/* ── State ─────────────────────────────────────── */
+var N=7,cur=0,busy=false;
+var LABELS=['01/HERO','02/SUMMARY','03/SKILLS','04/EXPERIENCE','05/PROJECTS','06/CREDENTIALS','07/CONTACT'];
 
-// FIX (Bug 2): Declare isMobile in the outer scope BEFORE any event
-// listeners that reference it. Previously it only existed inside init3D(),
-// so the wheel listener threw a ReferenceError on the very first scroll.
-var isMobile = window.innerWidth <= 768;
+// FIX: isMobile in outer scope — wheel listener needs it before THREE loads
+var isMobile=window.innerWidth<=768;
 
-// Update isMobile on resize (e.g. DevTools responsive toggle)
-window.addEventListener('resize', function(){
-  isMobile = window.innerWidth <= 768;
-});
+// FIX: HL1/HL2 outer scope — go() can reference them before 3D inits
+var HL1=null,HL2=null;
+var accel=false,accTimer=null;
 
-// FIX (Bugs 1 & 4): THREE.* variables are NO LONGER declared here in
-// the outer scope. They were previously constructed at parse-time with
-// `new THREE.Vector3(...)` before THREE.js had loaded, causing an
-// immediate TypeError crash. They are now declared inside init3D() after
-// the library is confirmed loaded.
-//
-// FIX (Bug 3): HL1 and HL2 are declared here (null) so go() can safely
-// reference them, but they are ASSIGNED inside init3D() after scene setup.
-var HL1 = null, HL2 = null;
+/* ── DOM ───────────────────────────────────────── */
+var ov=document.getElementById('ov');
+var trk=document.getElementById('track');
+var nlEl=document.getElementById('nl');
+var hudEl=document.getElementById('hud');
+var hfEl=document.getElementById('hf');
+var ndEl=document.getElementById('nd');
+var dots=[];
 
-// Camera targets for go() — initialised as plain objects, upgraded to
-// THREE.Vector3 inside init3D() once THREE is available.
-var camTarget = { p: {x:0,y:5,z:21}, l: {x:0,y:1.5,z:0} };
-
-for (var di = 0; di < N; di++) {
+/* ── Nav dots ──────────────────────────────────── */
+for(var di=0;di<N;di++){
   (function(i){
-    var d = document.createElement('div');
-    d.className = 'ndot' + (i === 0 ? ' on' : '');
-    d.addEventListener('click', function(){ go(i); });
-    ndEl.appendChild(d);
-    dots.push(d);
+    var d=document.createElement('div');
+    d.className='ndot'+(i===0?' on':'');
+    d.addEventListener('click',function(){go(i);});
+    ndEl.appendChild(d);dots.push(d);
   })(di);
 }
+document.getElementById('mob-prev').addEventListener('click',function(){go(Math.max(cur-1,0));});
+document.getElementById('mob-next').addEventListener('click',function(){go(Math.min(cur+1,N-1));});
 
-document.getElementById('mob-prev').addEventListener('click', function(){ go(Math.max(cur-1, 0)); });
-document.getElementById('mob-next').addEventListener('click', function(){ go(Math.min(cur+1, N-1)); });
-
+/* ── updNav ────────────────────────────────────── */
 function updNav(){
-  dots.forEach(function(d,i){ d.className = 'ndot' + (i === cur ? ' on' : ''); });
-  nlEl.textContent = LABELS[cur];
-  document.getElementById('prog').style.width = ((cur / (N-1)) * 100) + '%';
-  document.getElementById('mob-cur').textContent = LABELS[cur];
+  dots.forEach(function(d,i){d.className='ndot'+(i===cur?' on':'');});
+  nlEl.textContent=LABELS[cur];
+  document.getElementById('prog').style.width=((cur/(N-1))*100)+'%';
+  document.getElementById('mob-cur').textContent=LABELS[cur];
 }
 
+/* ── go() ──────────────────────────────────────── */
 function go(idx){
-  if (idx === cur || busy) return;
-  busy = true;
-  var fwd = idx > cur;
-  cur = idx;
-
-  if (fwd) {
+  if(idx===cur||busy)return;
+  busy=true;
+  var fwd=idx>cur;cur=idx;
+  if(fwd){
+    accel=true;
+    if(accTimer)clearTimeout(accTimer);
+    accTimer=setTimeout(function(){accel=false;},1400);
     hudEl.classList.add('on');
-    hfEl.style.width = '100%';
-    // FIX (Bug 5): Was 1300ms — shorter than the 1.4s CSS transition,
-    // causing the bar to snap back mid-animation. Now 1500ms so the
-    // 1.4s ease transition fully completes before we reset width to 0.
+    hfEl.style.width='100%';
+    // FIX: 1600ms > 1.5s CSS transition on .hfill
     setTimeout(function(){
-      hfEl.style.width = '0';
-      setTimeout(function(){ hudEl.classList.remove('on'); }, 400);
-    }, 1500);
+      hfEl.style.width='0';
+      setTimeout(function(){hudEl.classList.remove('on');},400);
+    },1600);
   }
-
-  // Animate camera if 3D scene is active
-  if (typeof animateCamera === 'function') {
-    animateCamera(cur);
-  }
-
-  // Highlight spotlights on experience slide
-  if (HL1) HL1.intensity = (cur === 3) ? 5 : 0;
-  if (HL2) HL2.intensity = (cur === 3) ? 5 : 0;
-
-  ov.style.opacity = '.35';
-  trk.style.transform = 'translateX(' + (-cur * 100) + 'vw)';
+  if(HL1)HL1.intensity=cur===3?5:0;
+  if(HL2)HL2.intensity=cur===3?5:0;
+  ov.style.opacity='.35';
+  trk.style.transform='translateX('+(-cur*100)+'vw)';
   updNav();
-
   setTimeout(function(){
-    ov.style.opacity = '0';
-    var sl = document.querySelectorAll('.sl')[cur];
-    if (sl) sl.scrollTop = 0;
-  }, 200);
-
-  // FIX (Bug 6): Keep busy lock duration consistent with the CSS slide
-  // transition (.9s). Was 960ms which is fine, but made explicit here.
-  setTimeout(function(){ busy = false; }, 920);
+    ov.style.opacity='0';
+    var slides=document.querySelectorAll('.sl');
+    if(slides[cur])slides[cur].scrollTop=0;
+  },200);
+  setTimeout(function(){busy=false;},960);
 }
 
-document.getElementById('eb').addEventListener('click', function(){ go(1); });
+document.getElementById('eb').addEventListener('click',function(){go(1);});
 
-// FIX (Bug 2 — continued): isMobile is now safely accessible here because
-// it was declared in the outer scope above, before this listener is added.
-var wl = false;
-window.addEventListener('wheel', function(e){
-  if (isMobile) return;
-  if (wl) return;
-  wl = true;
-  setTimeout(function(){ wl = false; }, 1100);
-  (e.deltaY > 0 || e.deltaX > 0) ? go(Math.min(cur+1, N-1)) : go(Math.max(cur-1, 0));
-}, { passive: true });
+/* ── Wheel ─────────────────────────────────────── */
+var wl=false;
+window.addEventListener('wheel',function(e){
+  if(isMobile)return;
+  if(wl)return;wl=true;setTimeout(function(){wl=false;},1100);
+  (e.deltaY>0||e.deltaX>0)?go(Math.min(cur+1,N-1)):go(Math.max(cur-1,0));
+},{passive:true});
 
-window.addEventListener('keydown', function(e){
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(Math.min(cur+1, N-1));
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(Math.max(cur-1, 0));
+/* ── Keyboard ──────────────────────────────────── */
+window.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')go(Math.min(cur+1,N-1));
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(Math.max(cur-1,0));
 });
 
-var tx = 0, ty = 0;
-window.addEventListener('touchstart', function(e){
-  tx = e.touches[0].clientX;
-  ty = e.touches[0].clientY;
-}, { passive: true });
+/* ── Touch swipe ───────────────────────────────── */
+var tx=0,ty=0;
+window.addEventListener('touchstart',function(e){
+  tx=e.touches[0].clientX;ty=e.touches[0].clientY;
+},{passive:true});
+window.addEventListener('touchend',function(e){
+  var dx=e.changedTouches[0].clientX-tx;
+  var dy=e.changedTouches[0].clientY-ty;
+  // FIX: clear horizontal intent required — don't fight vertical scroll
+  if(Math.abs(dx)<60)return;
+  if(Math.abs(dy)>Math.abs(dx)*0.5)return;
+  dx<0?go(Math.min(cur+1,N-1)):go(Math.max(cur-1,0));
+},{passive:true});
 
-// FIX (Bug 8): Restructured swipe detection so that:
-//   1. We bail immediately if horizontal distance < 60px (too short to be intentional).
-//   2. We bail if vertical component exceeds 60% of horizontal (user is scrolling, not swiping).
-// Previously the ratio check used `isMobile ? 2.5 : 1` which was applied the
-// wrong way — the `> Math.abs(dx)` test bailed on horizontal swipes when
-// dy was large, but the 60px dx check came AFTER that, so short diagonal
-// touches could still trigger navigation. Now the order is unambiguous.
-window.addEventListener('touchend', function(e){
-  var dx = e.changedTouches[0].clientX - tx;
-  var dy = e.changedTouches[0].clientY - ty;
-  if (Math.abs(dx) < 60) return;                        // too short
-  if (Math.abs(dy) > Math.abs(dx) * 0.6) return;       // too vertical
-  dx < 0 ? go(Math.min(cur+1, N-1)) : go(Math.max(cur-1, 0));
-}, { passive: true });
+/* ── Resize ────────────────────────────────────── */
+window.addEventListener('resize',function(){isMobile=window.innerWidth<=768;});
 
-
-// Skills tag cloud
-var SKILLS = [
-  {n:'TypeScript', c:'#3178c6'}, {n:'JavaScript', c:'#f7df1e'},
-  {n:'Python',     c:'#3572A5'}, {n:'Java',       c:'#f89820'},
-  {n:'Go',         c:'#00ADD8'}, {n:'React',       c:'#61DAFB'},
-  {n:'Next.js',    c:'#aaaaaa'}, {n:'Angular',     c:'#dd0031'},
-  {n:'Node.js',    c:'#339933'}, {n:'NestJS',      c:'#e0234e'},
-  {n:'FastAPI',    c:'#05998b'}, {n:'GraphQL',     c:'#e10098'},
-  {n:'AWS',        c:'#FF9900'}, {n:'Docker',      c:'#2496ED'},
-  {n:'Kubernetes', c:'#326CE5'}, {n:'Terraform',   c:'#7B42BC'},
-  {n:'PostgreSQL', c:'#336791'}, {n:'Redis',       c:'#DC382D'},
-  {n:'DynamoDB',   c:'#4053d6'}, {n:'MongoDB',     c:'#47A248'},
-  {n:'Cypress',    c:'#04C38E'}, {n:'Playwright',  c:'#2EAD33'},
-  {n:'GitHub Actions', c:'#2088FF'}, {n:'Spring Boot', c:'#6DB33F'}
+/* ── Skills tag cloud ──────────────────────────── */
+var SKILLS=[
+  {n:'TypeScript',c:'#3178c6'},{n:'JavaScript',c:'#f7df1e'},
+  {n:'Python',c:'#3572A5'},{n:'Java',c:'#f89820'},
+  {n:'Go',c:'#00ADD8'},{n:'React',c:'#61DAFB'},
+  {n:'Next.js',c:'#aaaaaa'},{n:'Angular',c:'#dd0031'},
+  {n:'Node.js',c:'#339933'},{n:'NestJS',c:'#e0234e'},
+  {n:'FastAPI',c:'#05998b'},{n:'GraphQL',c:'#e10098'},
+  {n:'AWS',c:'#FF9900'},{n:'Docker',c:'#2496ED'},
+  {n:'Kubernetes',c:'#326CE5'},{n:'Terraform',c:'#7B42BC'},
+  {n:'PostgreSQL',c:'#336791'},{n:'Redis',c:'#DC382D'},
+  {n:'DynamoDB',c:'#4053d6'},{n:'MongoDB',c:'#47A248'},
+  {n:'Cypress',c:'#04C38E'},{n:'Playwright',c:'#2EAD33'},
+  {n:'GitHub Actions',c:'#2088FF'},{n:'Spring Boot',c:'#6DB33F'}
 ];
-
-var angles = [-3,-1,0,2,-2,1,-1,2,0,-3,1,-2,3,0,-1,2,-2,1,0,-3,2,-1,0,3];
-var cloud = document.getElementById('tag-cloud');
-if (cloud) {
-  cloud.style.cssText = 'display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:8px;';
-  SKILLS.forEach(function(sk, i){
-    var t = document.createElement('div');
-    var r = parseInt(sk.c.slice(1,3), 16);
-    var g = parseInt(sk.c.slice(3,5), 16);
-    var b = parseInt(sk.c.slice(5,7), 16);
-    var ang = angles[i % angles.length];
-    t.textContent = sk.n;
-    t.style.cssText = [
-      'font-family:JetBrains Mono,monospace',
-      'font-size:12px',
-      'font-weight:600',
-      'padding:7px 15px',
-      'border-radius:3px',
-      'cursor:default',
-      'letter-spacing:.5px',
-      'transition:all .22s ease',
-      'transform:rotate('+ang+'deg)',
+var angles=[-3,-1,0,2,-2,1,-1,2,0,-3,1,-2,3,0,-1,2,-2,1,0,-3,2,-1,0,3];
+var cloud=document.getElementById('tag-cloud');
+if(cloud){
+  cloud.style.cssText='display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:8px;';
+  SKILLS.forEach(function(sk,i){
+    var t=document.createElement('div');
+    var r=parseInt(sk.c.slice(1,3),16);
+    var g=parseInt(sk.c.slice(3,5),16);
+    var b=parseInt(sk.c.slice(5,7),16);
+    var ang=angles[i%angles.length];
+    t.textContent=sk.n;
+    t.style.cssText=[
+      'font-family:JetBrains Mono,monospace','font-size:12px','font-weight:600',
+      'padding:7px 14px','border-radius:3px','cursor:default','letter-spacing:.5px',
+      'transition:all .22s ease','transform:rotate('+ang+'deg)',
       'color:'+sk.c,
       'border:1px solid rgba('+r+','+g+','+b+',.35)',
       'background:rgba('+r+','+g+','+b+',.1)'
     ].join(';');
-    t.addEventListener('mouseenter', function(){
-      this.style.transform = 'rotate(0deg) scale(1.15)';
-      this.style.background = 'rgba('+r+','+g+','+b+',.28)';
-      this.style.borderColor = sk.c;
-      this.style.boxShadow = '0 0 12px rgba('+r+','+g+','+b+',.4)';
+    t.addEventListener('mouseenter',function(){
+      this.style.transform='rotate(0deg) scale(1.12)';
+      this.style.background='rgba('+r+','+g+','+b+',.28)';
+      this.style.borderColor=sk.c;
+      this.style.boxShadow='0 0 12px rgba('+r+','+g+','+b+',.4)';
     });
-    t.addEventListener('mouseleave', function(){
-      this.style.transform = 'rotate('+ang+'deg) scale(1)';
-      this.style.background = 'rgba('+r+','+g+','+b+',.1)';
-      this.style.borderColor = 'rgba('+r+','+g+','+b+',.35)';
-      this.style.boxShadow = 'none';
+    t.addEventListener('mouseleave',function(){
+      this.style.transform='rotate('+ang+'deg) scale(1)';
+      this.style.background='rgba('+r+','+g+','+b+',.1)';
+      this.style.borderColor='rgba('+r+','+g+','+b+',.35)';
+      this.style.boxShadow='none';
     });
     cloud.appendChild(t);
   });
 }
 
-// CSS star particles
-var starsEl = document.getElementById('stars');
-if (starsEl) {
-  var frag = document.createDocumentFragment();
-  for (var si = 0; si < 80; si++) {
-    var star = document.createElement('div');
-    var size = Math.random() * 2 + 1;
-    var dur  = Math.random() * 4 + 2;
-    star.className = 'star';
-    star.style.cssText = [
-      'width:'+size+'px',
-      'height:'+size+'px',
+/* ── CSS Stars ─────────────────────────────────── */
+var starsEl=document.getElementById('stars');
+if(starsEl){
+  var frag=document.createDocumentFragment();
+  for(var si=0;si<80;si++){
+    var star=document.createElement('div');
+    var size=Math.random()*2+1,dur=Math.random()*4+2;
+    star.className='star';
+    star.style.cssText=[
+      'width:'+size+'px','height:'+size+'px',
       'left:'+(Math.random()*100)+'%',
       'top:'+(Math.random()*100)+'%',
       'animation-duration:'+dur+'s',
@@ -641,175 +699,98 @@ if (starsEl) {
   starsEl.appendChild(frag);
 }
 
-// Dismiss loader
+/* ── Dismiss loader ────────────────────────────── */
 setTimeout(function(){
-  var el = document.getElementById('loader');
-  if (el) el.classList.add('out');
-}, 800);
+  var el=document.getElementById('loader');
+  if(el)el.classList.add('out');
+},800);
 
-// Lazy-load Three.js — non-blocking, safe fallback to CSS stars if it fails
+/* ── Optional THREE.js background ─────────────── */
 setTimeout(function(){
-  try {
-    var test = document.createElement('canvas');
-    var gl = test.getContext('webgl') || test.getContext('experimental-webgl');
-    if (!gl) return;
-    var s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    s.onload = function(){
-      if (typeof THREE === 'undefined') return;
-      try { init3D(); } catch(e) { console.warn('3D init failed:', e.message); }
+  try{
+    var test=document.createElement('canvas');
+    var gl=test.getContext('webgl')||test.getContext('experimental-webgl');
+    if(!gl)return;
+    var s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    s.onload=function(){
+      if(typeof THREE==='undefined')return;
+      try{init3D();}catch(e){console.warn('3D init failed:',e.message);}
     };
-    s.onerror = function(){ console.warn('Three.js CDN unavailable — using CSS background.'); };
+    s.onerror=function(){console.warn('Three.js CDN unavailable.');};
     document.head.appendChild(s);
-  } catch(e) {
-    console.warn('3D setup failed:', e.message);
-  }
-}, 1000);
+  }catch(e){console.warn('3D setup error:',e.message);}
+},1200);
 
-// Exposed so go() can call it once 3D is live
-var animateCamera = null;
-
+/* ── init3D ────────────────────────────────────── */
+// FIX: ALL THREE.* calls are inside this function — nothing in outer scope
 function init3D(){
-  if (typeof THREE === 'undefined') return;
-
-  // FIX (Bugs 1 & 4): ALL THREE.* construction now lives inside init3D(),
-  // called only after the library has loaded. Previously tP, tL, and CAMS
-  // were constructed at IIFE parse-time, before THREE loaded, causing an
-  // immediate TypeError crash.
-  var CAMS = [
-    {p: new THREE.Vector3(0,5,21),   l: new THREE.Vector3(0,1.5,0)},
-    {p: new THREE.Vector3(-2,4,13),  l: new THREE.Vector3(4,2,0)},
-    {p: new THREE.Vector3(0,12,16),  l: new THREE.Vector3(0,1,0)},
-    {p: new THREE.Vector3(7,1.5,7),  l: new THREE.Vector3(-3,-1,0)},
-    {p: new THREE.Vector3(0,16,4),   l: new THREE.Vector3(0,-1,-12)},
-    {p: new THREE.Vector3(4,8,10),   l: new THREE.Vector3(0,2,-5)},
-    {p: new THREE.Vector3(-6,3,-1),  l: new THREE.Vector3(0,2,-22)}
+  if(typeof THREE==='undefined')return;
+  var CAMS=[
+    {p:new THREE.Vector3(0,5,21),l:new THREE.Vector3(0,1.5,0)},
+    {p:new THREE.Vector3(-2,4,13),l:new THREE.Vector3(4,2,0)},
+    {p:new THREE.Vector3(0,12,16),l:new THREE.Vector3(0,1,0)},
+    {p:new THREE.Vector3(7,1.5,7),l:new THREE.Vector3(-3,-1,0)},
+    {p:new THREE.Vector3(0,16,4),l:new THREE.Vector3(0,-1,-12)},
+    {p:new THREE.Vector3(4,8,10),l:new THREE.Vector3(0,2,-5)},
+    {p:new THREE.Vector3(-6,3,-1),l:new THREE.Vector3(0,2,-22)}
   ];
-
-  var tP = CAMS[0].p.clone();
-  var tL = CAMS[0].l.clone();
-
-  // FIX (Bug 3): HL1 and HL2 are now properly assigned inside init3D().
-  // They were declared as null in the outer scope (so go() can reference
-  // them safely even before 3D loads), and now get real SpotLight objects
-  // wired into the scene.
-  var bg3d = document.createElement('canvas');
-  bg3d.id = 'bg3d';
-  bg3d.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none;';
-  document.body.insertBefore(bg3d, document.body.firstChild);
-
-  var isMob = window.innerWidth <= 768;
-  var R = new THREE.WebGLRenderer({ canvas: bg3d, antialias: false, alpha: false });
-  R.setPixelRatio(isMob ? 1 : Math.min(window.devicePixelRatio, 1.5));
-  R.setSize(window.innerWidth, window.innerHeight);
-  R.setClearColor(0x060B14, 1);
-
-  var sc  = new THREE.Scene();
-  sc.fog = new THREE.Fog(0x060B14, 28, 115);
-  var cam = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 200);
-  cam.position.copy(tP);
-  cam.lookAt(tL);
-
-  sc.add(new THREE.AmbientLight(0x0d1a2e, 3));
-
-  var gk = new THREE.SpotLight(0xF0C020, 8, 85, Math.PI/5, 0.4, 1.5);
-  gk.position.set(2, 18, 8);
-  sc.add(gk);
-
-  sc.add(new THREE.DirectionalLight(0x1a3a80, 2)).position.set(-12, 6, -8);
-
-  // FIX (Bug 3): Assign HL1 and HL2 to the outer-scope vars so go() can
-  // toggle their intensity on slide 3 (experience).
-  HL1 = new THREE.SpotLight(0xFFFFFF, 0, 20);
-  HL1.position.set(-4, 8, 4);
-  sc.add(HL1);
-
-  HL2 = new THREE.SpotLight(0x4488FF, 0, 20);
-  HL2.position.set(4, 8, -4);
-  sc.add(HL2);
-
-  // Ground
-  var gnd = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 200),
-    new THREE.MeshStandardMaterial({ color: 0x040810, roughness: 0.95 })
-  );
-  gnd.rotation.x = -Math.PI / 2;
-  gnd.position.y = -2.1;
-  sc.add(gnd);
-  sc.add(new THREE.GridHelper(200, 50, 0x0c1422, 0x08101e));
-
-  // Buildings
-  var bm = new THREE.MeshStandardMaterial({ color: 0x0c1422, roughness: 0.75, metalness: 0.3 });
-  [
-    [-18,-26,5,4,30],[-10,-28,7,5,42],[-3,-30,4,4,34],
-    [0,-32,9,6,52],[4,-30,4,4,32],[11,-28,7,5,38],[18,-26,5,4,26]
-  ].forEach(function(b){
-    var m = new THREE.Mesh(new THREE.BoxGeometry(b[2], b[4], b[3]), bm.clone());
-    m.position.set(b[0], b[4]/2 - 2.1, b[1]);
-    sc.add(m);
+  var bg3d=document.createElement('canvas');
+  bg3d.style.cssText='position:fixed;inset:0;z-index:0;pointer-events:none;';
+  document.body.insertBefore(bg3d,document.body.firstChild);
+  var isMob=window.innerWidth<=768;
+  var R=new THREE.WebGLRenderer({canvas:bg3d,antialias:false,alpha:false});
+  R.setPixelRatio(isMob?1:Math.min(window.devicePixelRatio,1.5));
+  R.setSize(window.innerWidth,window.innerHeight);
+  R.setClearColor(0x060B14,1);
+  var sc=new THREE.Scene();
+  sc.fog=new THREE.Fog(0x060B14,28,115);
+  var cam=new THREE.PerspectiveCamera(52,window.innerWidth/window.innerHeight,0.1,200);
+  cam.position.copy(CAMS[0].p);cam.lookAt(CAMS[0].l);
+  sc.add(new THREE.AmbientLight(0x0d1a2e,3));
+  var gk=new THREE.SpotLight(0xF0C020,8,85,Math.PI/5,0.4,1.5);
+  gk.position.set(2,18,8);sc.add(gk);
+  var dl=new THREE.DirectionalLight(0x1a3a80,2);
+  dl.position.set(-12,6,-8);sc.add(dl);
+  // FIX: assign to outer-scope vars so go() can control them
+  HL1=new THREE.SpotLight(0xffffff,0,20);HL1.position.set(-4,8,4);sc.add(HL1);
+  HL2=new THREE.SpotLight(0x4488FF,0,20);HL2.position.set(4,8,-4);sc.add(HL2);
+  var gnd=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0x040810,roughness:0.95}));
+  gnd.rotation.x=-Math.PI/2;gnd.position.y=-2.1;sc.add(gnd);
+  sc.add(new THREE.GridHelper(200,50,0x0c1422,0x08101e));
+  var bm=new THREE.MeshStandardMaterial({color:0x0c1422,roughness:0.75,metalness:0.3});
+  [[-18,-26,5,4,30],[-10,-28,7,5,42],[-3,-30,4,4,34],[0,-32,9,6,52],
+   [4,-30,4,4,32],[11,-28,7,5,38],[18,-26,5,4,26]].forEach(function(b){
+    var m=new THREE.Mesh(new THREE.BoxGeometry(b[2],b[4],b[3]),bm.clone());
+    m.position.set(b[0],b[4]/2-2.1,b[1]);sc.add(m);
   });
-
-  // Floating particles
-  var pG = new THREE.BufferGeometry();
-  var pA = new Float32Array(400 * 3);
-  for (var i = 0; i < 400; i++) {
-    pA[i*3]   = (Math.random() - 0.5) * 100;
-    pA[i*3+1] = Math.random() * 50 + 2;
-    pA[i*3+2] = (Math.random() - 0.5) * 70;
-  }
-  pG.setAttribute('position', new THREE.BufferAttribute(pA, 3));
-  sc.add(new THREE.Points(pG, new THREE.PointsMaterial({
-    color: 0xa0aac0, size: 0.06, transparent: true, opacity: 0.3
-  })));
-
-  // Hide CSS stars now that WebGL is live
-  var stEl = document.getElementById('stars');
-  if (stEl) stEl.style.display = 'none';
-
-  // Camera interpolation targets (updated by animateCamera)
-  var camPos = CAMS[0].p.clone();
-  var camLook = CAMS[0].l.clone();
-  var targetPos = CAMS[0].p.clone();
-  var targetLook = CAMS[0].l.clone();
-
-  // Expose animateCamera so go() can call it
-  animateCamera = function(idx){
-    var c = CAMS[Math.min(idx, CAMS.length - 1)];
-    targetPos.copy(c.p);
-    targetLook.copy(c.l);
-  };
-
-  var clk = 0;
+  var pG=new THREE.BufferGeometry();
+  var pA=new Float32Array(400*3);
+  for(var i=0;i<400;i++){pA[i*3]=(Math.random()-.5)*100;pA[i*3+1]=Math.random()*50+2;pA[i*3+2]=(Math.random()-.5)*70;}
+  pG.setAttribute('position',new THREE.BufferAttribute(pA,3));
+  sc.add(new THREE.Points(pG,new THREE.PointsMaterial({color:0xa0aac0,size:0.06,transparent:true,opacity:0.3})));
+  var stEl=document.getElementById('stars');
+  if(stEl)stEl.style.display='none';
+  var camPos=new THREE.Vector3().copy(CAMS[0].p);
+  var camLook=new THREE.Vector3().copy(CAMS[0].l);
+  var clk=0;
   function tick(){
-    requestAnimationFrame(tick);
-    clk += 0.012;
-
-    // Smooth camera interpolation
-    camPos.lerp(targetPos, 0.04);
-    camLook.lerp(targetLook, 0.04);
-    cam.position.copy(camPos);
-    cam.lookAt(camLook);
-
-    // Drift particles downward
-    var pa = pG.attributes.position.array;
-    for (var j = 0; j < 400; j++) {
-      pa[j*3+1] -= 0.015;
-      if (pa[j*3+1] < 0) pa[j*3+1] = 50;
-    }
-    pG.attributes.position.needsUpdate = true;
-
-    gk.intensity = 7 + Math.sin(clk * 0.7) * 2;
-    gk.position.x = Math.sin(clk * 0.2) * 4;
-
-    R.render(sc, cam);
+    requestAnimationFrame(tick);clk+=0.012;
+    var c=CAMS[Math.min(cur,CAMS.length-1)];
+    camPos.lerp(c.p,0.04);camLook.lerp(c.l,0.04);
+    cam.position.copy(camPos);cam.lookAt(camLook);
+    var pa=pG.attributes.position.array;
+    for(var j=0;j<400;j++){pa[j*3+1]-=0.015;if(pa[j*3+1]<0)pa[j*3+1]=50;}
+    pG.attributes.position.needsUpdate=true;
+    gk.intensity=7+Math.sin(clk*.7)*2;gk.position.x=Math.sin(clk*.2)*4;
+    R.render(sc,cam);
   }
   tick();
-
-  window.addEventListener('resize', function(){
-    cam.aspect = window.innerWidth / window.innerHeight;
+  window.addEventListener('resize',function(){
+    cam.aspect=window.innerWidth/window.innerHeight;
     cam.updateProjectionMatrix();
-    R.setSize(window.innerWidth, window.innerHeight);
-    isMobile = window.innerWidth <= 768;
+    R.setSize(window.innerWidth,window.innerHeight);
+    isMob=window.innerWidth<=768;
   });
 }
 
