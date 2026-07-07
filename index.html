@@ -396,15 +396,27 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="ss">WHERE I'VE DEPLOYED CODE THAT MATTERS</div>
     <div class="eg">
       <div class="ec">
+        <div class="er">Software Engineer</div>
+        <div class="eco">@ Experian</div>
+        <div class="ed">MAR 2026 — PRESENT</div>
+        <ul class="ebl">
+          <li>Shipped the commercial decisioning flow end-to-end (BIS + PayNet, parallel fan-out), reducing P95 latency by ~40%.</li>
+          <li>Built a high-throughput pipeline (EventBridge, Kinesis Firehose, S3) processing 1M+ events/day into partitioned Parquet datasets; led an internal usage-based billing platform with recovery jobs and audit logging.</li>
+          <li>Generated Airflow DAGs for ~110 mainframe JCL jobs using RAG to query in-network LLMs, accelerating migration.</li>
+          <li>Cut MongoDB query latency 30% on multi-terabyte datasets via compound index tuning, improving SLA compliance.</li>
+          <li>Built observability (Splunk, QuickSight, Grafana), cutting mean debug time ~40%; on-call for ~10M requests/day and ~600M downstream calls/day.</li>
+        </ul>
+      </div>
+      <div class="ec">
         <div class="er">Full Stack Software Engineer</div>
         <div class="eco">@ DBS Bank · India</div>
         <div class="ed">DEC 2022 — DEC 2023</div>
         <ul class="ebl">
-          <li>Re-architected 6 banking modules into Spring Boot microservices on AWS EKS, sustaining 99.9% uptime across ~2M daily transactions.</li>
-          <li>KYC automation (Textract + Lambda), cutting onboarding from 3-5 days to 24 hrs with ~70% less manual review.</li>
-          <li>LLM-powered advisory via AWS Bedrock for ~500K active digibank users.</li>
-          <li>Real-time fraud detection under 200ms p99 latency, reducing false negatives by ~30%.</li>
-          <li>API p95 latency ~65% faster (800ms to 280ms) via Redis caching.</li>
+          <li>SFSGW: Built 10+ Spring Boot modules processing 50,000+ financial documents daily across corporate actions, mutual funds &amp; tax processing.</li>
+          <li>Implemented AES-256 encryption and an automated JasperReports pipeline generating 100,000+ encrypted reports monthly on JBoss EAP 8.0.</li>
+          <li>FOPE: Led AngularJS→Angular 16 migration for fund ops processing 10,000+ daily orders (SG/HK), sustaining 500 orders/min.</li>
+          <li>Engineered facial verification auth in Spring Boot, cutting login latency 65% (800ms to 283ms); built a FIDO-based transaction signing framework projected to save $20M annually.</li>
+          <li>Owned the IAM Authorization module (JWT, JWE + Redis-cached sessions, adaptive 2FA/3FA MFA for MAS compliance); optimized Kafka/Elasticsearch, cutting indexing latency 40%.</li>
         </ul>
       </div>
       <div class="ec">
@@ -412,10 +424,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         <div class="eco">@ LTIMindtree · India</div>
         <div class="ed">JUL 2020 — NOV 2022</div>
         <ul class="ebl">
-          <li>Led ~200K LOC monolith migration to 12 microservices, cutting deploy time from 2 weeks to 2 hours.</li>
-          <li>GraphQL APIs consolidating 5+ legacy systems, shrinking payload size by ~55%.</li>
-          <li>Angular/TypeScript front-ends across 3 enterprise clients with 85%+ test coverage.</li>
-          <li>GitHub Actions CI/CD across 4 projects, reducing manual deployment effort by ~80%.</li>
+          <li>Led ~200K LOC monolith migration to 12 microservices for a global banking client, cutting deploy time from 2 weeks to under 2 hours.</li>
+          <li>GraphQL APIs consolidating 5+ legacy systems for a retail client, shrinking payload size by ~55% and cutting frontend load times ~35%.</li>
+          <li>Angular/TypeScript front-ends across 3 enterprise clients with 85%+ test coverage across ~40K lines of component code.</li>
+          <li>GitHub Actions CI/CD across 4 projects, reducing manual deployment effort by ~80% and release incidents by ~50%.</li>
           <li>Next.js PWA with +28% mobile engagement and ~$120K saved in native app dev cost.</li>
         </ul>
       </div>
